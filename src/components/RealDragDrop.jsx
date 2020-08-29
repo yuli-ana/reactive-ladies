@@ -67,11 +67,15 @@ class InnerList extends PureComponent {
 function RealDragDrop() {
   const [state, setState] = useState(defaultState);
 
+  // a function called on onDragEnd event (react-beautiful-dnd library)
   const onDragEnd = (result) => {
+    // result is an in-built library object, we are destructuring its in-built properties
     const { destination, source, draggableId, type } = result;
 
+    // if the user drags items outside of the designated area (droppables), exit the function 
     if (!destination) return;
 
+    // if the source is the same as destination, exit the function 
     if (
       destination.droppableId === source.droppableId &&
       destination.index === source.index
@@ -79,11 +83,15 @@ function RealDragDrop() {
       return;
     }
 
+    // handling dragging of columns
     if (type === "column") {
+      // creating a copy of column order array
       const newColumnOrder = Array.from(state.columnOrder);
+      // reordering columns within the column order array
       newColumnOrder.splice(source.index, 1);
       newColumnOrder.splice(destination.index, 0, draggableId);
 
+      // updating the state with the new column order array
       const newState = {
         ...state,
         columnOrder: newColumnOrder
@@ -92,19 +100,28 @@ function RealDragDrop() {
       return;
     }
 
+    // the column from where we are dragging the ticket
     const home = state.columns[source.droppableId];
+
+     // the destination column where we are dragging the ticket
     const foreign = state.columns[destination.droppableId];
 
+
+    // if the tickets are dragged within the same column
     if (home === foreign) {
       const newTaskIds = Array.from(home.ticketIds);
+      // reordering tickets within the same column
       newTaskIds.splice(source.index, 1);
       newTaskIds.splice(destination.index, 0, draggableId);
 
+    
+      // creating a new column with the reordered tickets 
       const newHome = {
         ...home,
-        taskIds: newTaskIds
+        ticketIds: newTaskIds
       };
 
+       // creating new global state with updated column where the tickets were reordered
       const newState = {
         ...state,
         columns: {
@@ -112,26 +129,32 @@ function RealDragDrop() {
           [newHome.id]: newHome
         }
       };
-
+      
+      // updating state with new data (column with reordered tickets)
       setState(newState);
       return;
     }
 
     // moving from one list to another
+    // creating a copy of the array of tickets in the home column  
     const homeTaskIds = Array.from(home.ticketIds);
     homeTaskIds.splice(source.index, 1);
+    // updating the home column with new tickets  
     const newHome = {
       ...home,
       ticketIds: homeTaskIds
     };
 
+    // creating a copy of the array of tickets in the destination column  
     const foreignTaskIds = Array.from(foreign.ticketIds);
     foreignTaskIds.splice(destination.index, 0, draggableId);
+      // updating the destination column with new tickets  
     const newForeign = {
       ...foreign,
       ticketIds: foreignTaskIds
     };
 
+    // creating new global state with updated home and destination columns where there was a transfer of tickets
     const newState = {
       ...state,
       columns: {
