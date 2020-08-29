@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import Ticket from './Ticket';
 import CloseButton from './buttons/CloseButton';
-import AddButton from './buttons/AddButton';
 import { DataContext } from './Board';
+import AddButton from './buttons/AddButton';
+
 
 const box = {
     padding: 20,
@@ -18,10 +19,6 @@ const Column = ({column}) => {
 
     console.log(column);
 
-    function handleAddTicket(){
-        dispatch({type: "ADD_COLUMN"});
-    }
-
     function handleCloseTicket(e){
         dispatch({type: "CLOSE_COLUMN", payload: title });
     }
@@ -29,7 +26,7 @@ const Column = ({column}) => {
     
     return (
         <li style={box}>
-            <AddButton click={handleAddTicket}/>
+            <AddButton style={{margin: 0}}/>
             <CloseButton click={handleCloseTicket}/>
             <h2>{title}</h2>
             <ul>

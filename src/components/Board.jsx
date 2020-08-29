@@ -1,6 +1,7 @@
 import React, { useState,  useContext, useEffect, useReducer  } from "react";
 import Column from './Column';
 import dataReducer from './dataReducer';
+import AddButton from './buttons/AddButton';
 
 
 
@@ -48,13 +49,16 @@ function Board() {
 
     }, [columns]);
 
-    // console.log(JSON.parse(columns));
 
+    function handleAddTicket(){
+      dispatch({type: "ADD_COLUMN"});
+  }
 
 
   return (
     <>
       <DataContext.Provider value={{columns, dispatch}}>
+      <AddButton click={handleAddTicket}/>
       <ul style={{display: "flex"}}>
         {columns 
         ? columns.map((column, index) => <Column column={column} key={`${column.title}${index}`} />)
