@@ -1,50 +1,67 @@
-import React, { useState } from "react";
-import Ticket from './Ticket';
+import React, { useState,  useContext, useEffect, useReducer  } from "react";
+import Column from './Column';
+import dataReducer from './dataReducer';
+
+
+
+const defaultState = [
+  {
+    title: 'To Do',
+    tickets: [
+      {title: 'create component',
+        details: 'write code for board component.'}]
+  },
+  {
+    title: 'In Progress',
+    tickets: [
+      {title: 'create component',
+        details: 'write code for board component.'}]
+  },
+  {
+    title: 'Done',
+    tickets: [
+      {title: 'create component',
+        details: 'write code for board component.'}]
+  }
+]
+
+
+// Creates context, helps to pass data down to components tree
+export const DataContext = React.createContext();
+
 
 function Board() {
-  const [columns, setColumns] = useState([
-    {
-      title: 'To Do',
-      tickets: [
-        {title: 'create component',
-          details: 'write code for board component.'}]
-    },
-    {
-      title: 'In Progress',
-      tickets: [
-        {title: 'create component',
-          details: 'write code for board component.'}]
-    },
-    {
-      title: 'Done',
-      tickets: [
-        {title: 'create component',
-          details: 'write code for board component.'}]
-    }
-  ]);
+    // Initial state
+    // Runs when components is mounted 
+    const [initialData, setInitialState] = useState(JSON.parse(localStorage.getItem("board")) || defaultState);
+
+
+    // Takes for arguments reducer function and initial Data (state)
+    const [columns, dispatch] = useReducer(dataReducer, initialData);
+ 
+
+    // Sets initialData to our localStorage, each time I add ticket or column our state will update 
+    // and call useEffect where I pass updated data
+    useEffect(()=> {
+
+      localStorage.setItem("board", JSON.stringify(columns));
+
+    }, [columns]);
+
+    // console.log(JSON.parse(columns));
+
+
 
   return (
     <>
-    {
-      columns.map((column, index) => {
-        return (
-          <div key={`${column.title}${index}`}>
-            <h2>{column.title}</h2>
-            <ul>
-              {
-                column.tickets.map((ticket, index) => {
-                  return(
-                    <li key={`${ticket.title}${index}`}>
-                      <Ticket title={ticket.title} details={ticket.details}/>
-                    </li>
-                  )
-                })
-              }
-            </ul>
-          </div>
-        )
-      })
-    }
+      <DataContext.Provider value={{columns, dispatch}}>
+      <ul style={{display: "flex"}}>
+        {columns 
+        ? columns.map((column, index) => <Column column={column} key={`${column.title}${index}`} />)
+        : null
+      }
+      </ul>
+      </DataContext.Provider>
     </>
   )
 }

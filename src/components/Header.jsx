@@ -20,7 +20,7 @@ const Header = (props) => {
       <button onClick={props.toggleColorTheme}>Toggle</button>
       <button
         className="hamburger"
-        tabindex="0"
+        tabIndex="0"
         onClick={() => setisClosed(!isClosed)}
       >
         <FaBars />
