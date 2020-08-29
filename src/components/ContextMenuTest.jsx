@@ -33,8 +33,8 @@ function ContextMenuTest() {
 
   const handleContextMenu = (e) => {
     e.preventDefault();
-    setXPos(`${e.clientX}px`);
-    setYPos(`${e.clientY}px`)
+    setXPos(`${e.pageX}px`);
+    setYPos(`${e.pageY}px`)
     setShowMenu(true);
   }
 
@@ -51,6 +51,7 @@ function ContextMenuTest() {
 
   return (
     <>
+      <h2>Context Menu Test</h2>
       <div ref={ticket} className='ticket' style={{padding: '50px 100px', textAlign: 'center', backgroundColor: '#fff', border: '1px solid #777', width: '350px', margin: '0 auto'}}>
         <h3>Create Context Menu</h3>
       </div>
