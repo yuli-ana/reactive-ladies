@@ -17,7 +17,7 @@ const Header = (props) => {
   return (
     <nav>
       <div className="brand">Logo</div>
-      <button onClick={props.toggleColorTheme}>Toggle</button>
+      <button className="toggle" onClick={props.toggleColorTheme}>Toggle</button>
       <button
         className="hamburger"
         tabIndex="0"
