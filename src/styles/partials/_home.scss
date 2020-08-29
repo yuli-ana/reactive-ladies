@@ -63,3 +63,19 @@
     margin-bottom: 20px;
   }
 }
+
+.foundersSns {
+  text-align: center;
+  background-color: $textColor;
+  padding: 10px 20px;
+  border-radius: 5px;
+  li {
+    display: inline-block;
+    a {
+      display: block;
+      padding: 0 30px;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+  }
+}
