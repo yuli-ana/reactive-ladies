@@ -1,11 +1,11 @@
 import React from "react";
-import FakeDragDrop from './FakeDragDrop'
+import RealDragDrop from './RealDragDrop'
 
 function About() {
     return (
         <>
             <h1>About</h1>
-            <FakeDragDrop />
+            <RealDragDrop />
         </> 
     )
 }
