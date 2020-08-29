@@ -1,5 +1,8 @@
 import React, { Fragment } from "react";
 import headerImg from '../assets/undraw_online_organizer_ofxm.svg';
+import mintbeanLogo from '../assets/mintbean.png';
+import imgTwo from '../assets/undraw_subscriber_vabu.svg';
+import imgThree from '../assets/undraw_dev_productivity_umsq.svg';
 import {
   FaLinkedinIn,
   FaExternalLinkAlt,
@@ -22,6 +25,7 @@ function Home() {
         
         <section className='founders'>
           <h2>Founded by</h2>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit aut temporibus vel fuga similique eius minima fugit libero ex excepturi!</p>
           <ul className='foundersContainer'>
             <li className='foundersCard'>
               <img src='https://placeimg.com/400/400/people' />
@@ -58,12 +62,22 @@ function Home() {
 
         <section className='tools'>
           <h2>Created with</h2>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit aut temporibus vel fuga similique eius minima fugit libero ex excepturi!</p>
           <ul>
             <li><FaReact /> React</li>
-            <li>mintbean</li>
+            <li><img className='mintbeanLogo' src={mintbeanLogo}/> mintbean</li>
             <li>FeaturePeek</li>
             <li>Juno College</li>
           </ul>
+        </section>
+
+        <section className='subscribe'>
+          <img src={imgTwo} />
+          <div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores reiciendis, repellat architecto laborum nemo harum rem est distinctio ea. Rerum.</p>
+            <button type='button'>Subscribe</button>
+          </div>
+          <img src={imgThree} />
         </section>
       </div>
     )

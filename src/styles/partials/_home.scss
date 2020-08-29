@@ -4,8 +4,8 @@
   display: flex;
   padding: 100px 0;
   .introText {
-    padding-right: 100px;
-    flex-basis: 60%;
+    padding-right: 50px;
+    flex-basis: 50%;
     h1 {
       font: 700 3.5rem $primaryFont;
       letter-spacing: 1.2px;
@@ -18,7 +18,8 @@
     }
   }
   .introImg {
-    flex-basis: 40%;
+    flex-basis: 50%;
+    padding-left: 50px;;
   }
 }
 
@@ -29,8 +30,15 @@
   h2 {
     font: 500 2rem $primaryFont;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     letter-spacing: 1.2px;
+  }
+  p {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    letter-spacing: 1.2px;
+    max-width: 80%;
+    margin: 0 auto 30px auto;
   }
   .foundersContainer {
     display: flex;
@@ -91,8 +99,15 @@
   h2 {
     font: 500 2rem $primaryFont;
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
     letter-spacing: 1.2px;
+  }
+  p {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    letter-spacing: 1.2px;
+    max-width: 80%;
+    margin: 0 auto 80px auto;
   }
   ul {
     display: flex; 
@@ -107,5 +122,9 @@
       font-size: 2rem;
     }
   }
+}
 
+.tools li .mintbeanLogo {
+  max-width: 30px;
+  display: inline-block;
 }
