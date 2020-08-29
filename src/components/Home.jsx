@@ -4,6 +4,7 @@ import {
   FaLinkedinIn,
   FaExternalLinkAlt,
   FaTwitter,
+  FaReact
 } from "react-icons/fa";
 
 function Home() {
@@ -52,6 +53,16 @@ function Home() {
                 <li><a href='#'><FaExternalLinkAlt/></a></li>
               </ul>
             </li>
+          </ul>
+        </section>
+
+        <section className='tools'>
+          <h2>Created with</h2>
+          <ul>
+            <li><FaReact /> React</li>
+            <li>mintbean</li>
+            <li>FeaturePeek</li>
+            <li>Juno College</li>
           </ul>
         </section>
       </div>

@@ -1,3 +1,5 @@
+////////////////// .intro section styles //////////////////
+
 .intro {
   display: flex;
   padding: 100px 0;
@@ -19,6 +21,8 @@
     flex-basis: 40%;
   }
 }
+
+////////////////// .founders section styles //////////////////
 
 .founders {
   padding: 100px 0;
@@ -78,4 +82,30 @@
       color: #fff;
     }
   }
+}
+
+////////////////// .tools section styles //////////////////
+
+.tools {
+  padding: 50px 0 100px 0;
+  h2 {
+    font: 500 2rem $primaryFont;
+    text-align: center;
+    margin-bottom: 80px;
+    letter-spacing: 1.2px;
+  }
+  ul {
+    display: flex; 
+    background-color: #fff;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 150px 50px;
+    border-radius: 10px;
+    justify-content: space-around;
+    align-items: center;
+    li {
+      font-size: 2rem;
+    }
+  }
+
 }
