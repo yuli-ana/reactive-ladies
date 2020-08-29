@@ -7,6 +7,7 @@ const Container = styled.div`
   border: 0.1rem solid lightgrey;
   border-radius: 0.2rem;
   margin-bottom: 0.8rem;
+  background-color: ${(props) => (props.isDragging ? "lightgrey" : "white")};
 `;
 
 function MockTask(props) {
