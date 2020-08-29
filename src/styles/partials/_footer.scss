@@ -1,18 +1,44 @@
 footer {
     height: 10vh;
+    font: 400 1rem $primaryFont;
+    letter-spacing: 1.3px;
+    padding: 0 35px;
     text-align: center;
-    background-color: #273652;
-    color: white;
+    background-color: #fff;
+    color: $headerTextColor;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
-
+#language {
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    border-bottom: 1px solid $headerTextColor;
+    color: $headerTextColor;
+    padding: 5px;
+    letter-spacing: 1.2px;
+}
 
 .socials {
-    width: 40%;
+    width: 15%;
     display: flex;
     justify-content: space-around;
+    a {
+        text-decoration: none;
+        color: $headerTextColor;
+        font-size: 1.2rem;
+        &:hover {
+            color: $textColor;
+            transition: all 0.2s;
+        }
+    }
+  }
+
+  .appDl li {
+      display: inline-block;
+      &:first-of-type {
+          padding-right: 20px;
+      }
   }

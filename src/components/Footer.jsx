@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import googlePlay from '../assets/128x128.jpg' 
+import appleStore from '../assets/128x128copy.jpg' 
 import {
   FaLinkedinIn,
   FaExternalLinkAlt,
@@ -12,22 +14,35 @@ const Footer = (props) => {
   
   return (
     <footer>
-    <ul className="socials">
-      <li>
-      <FaLinkedinIn />
-      </li>
-      <li>
-      <FaExternalLinkAlt />
-      </li>
-      <li>
-      <FaTwitter />
-      </li>
-      <li>
-        <FaRegEnvelope />
-      </li>
-    </ul>
-    <p>Copyright © Reactive Ladies {date}</p>
-      </footer>
+      <label htmlFor='language' className='visuallyHidden'>Select language</label>
+      <select name='language' id='language'>
+        <option value='english'>English</option>
+        <option value='french'>French</option>
+      </select>
+      <p>Copyright © Reactive Ladies {date}</p>
+      <ul className="socials">
+        <li>
+        <a href='#'><FaLinkedinIn /></a>
+        </li>
+        <li>
+          <a href='#'><FaExternalLinkAlt /></a>
+        </li>
+        <li>
+          <a href='#'><FaTwitter /></a>
+        </li>
+        <li>
+          <a href='#'><FaRegEnvelope /></a>
+        </li>
+      </ul>
+      <ul className='appDl'>
+        <li>
+          <a><img src={googlePlay}/></a>
+        </li>
+        <li>
+          <a><img src={appleStore}/></a>
+        </li>
+      </ul>
+    </footer>
   );
 };
 

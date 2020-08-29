@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import {
-  FaTwitterSquare,
-  FaGoogle,
-  FaLinkedinIn,
-  FaExternalLinkAlt,
-  FaTwitter,
-  FaRegEnvelope,
-  FaBars
-} from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 
 const Header = (props) => {
   const [isClosed, setisClosed] = useState(true);

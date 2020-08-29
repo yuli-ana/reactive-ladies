@@ -10,7 +10,7 @@ nav {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 8px;
   
     .brand {
       height: 40px;
@@ -28,11 +28,12 @@ nav {
       letter-spacing: 1.3px;
       cursor: pointer;
       color: $headerTextColor;
-
     }
   
     .hamburger {
       display: none;
+      border: none;
+      padding-right: 12px;
       color: $headerTextColor;
       background-color: transparent;
       @media screen and (max-width: 768px) {
@@ -71,7 +72,6 @@ nav {
     }
   
     .menu li a {
-      // text-transform: uppercase;
       font: 400 1rem $primaryFont;
       letter-spacing: 1.3px;
       color: rgb(168, 168, 168);
