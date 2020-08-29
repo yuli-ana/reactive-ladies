@@ -1,10 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 // #ADD9E5;
 
+.wrapper {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: $primaryFont;
+    font-weight: 400;
     margin: 0px;
+    color: $textColor;
   }
   
   .pink {
@@ -15,6 +23,6 @@ body {
     background: #E6FBF6;
   }
 
-  main {
-    height: 80vh;
-}
+//   main {
+//     height: 80vh;
+// }
