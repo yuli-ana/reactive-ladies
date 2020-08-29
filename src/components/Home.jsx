@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import headerImg from '../assets/undraw_online_organizer_ofxm.svg';
 import mintbeanLogo from '../assets/mintbean.png';
 import imgTwo from '../assets/undraw_subscriber_vabu.svg';
@@ -73,7 +73,7 @@ function Home() {
 
         <section className='subscribe'>
           <img src={imgTwo} />
-          <div>
+          <div className='subscribeText'>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores reiciendis, repellat architecto laborum nemo harum rem est distinctio ea. Rerum.</p>
             <button type='button'>Subscribe</button>
           </div>
