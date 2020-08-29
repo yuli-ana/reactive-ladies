@@ -1,11 +1,29 @@
 import React from 'react';
+import CloseButton from './buttons/CloseButton';
 
-function Ticket(props) {
+
+const styleTicket ={
+  margin: 10,
+  background: "yellow",
+  width: "100%",
+  border: "1px solid black"
+}
+
+
+function Ticket({ticket}){
+
+ const {title, details} = ticket;
+
   return (
-    <>
-      <h3>{props.title}</h3>
-      <p>{props.details}</p>
-    </>
+    <li style={styleTicket}>
+      <div>
+        <CloseButton/>
+      </div>
+      {/* <div>
+      <h3>{title}</h3>
+      <p>{details}</p>
+      </div> */}
+    </li>
   )
 }
 

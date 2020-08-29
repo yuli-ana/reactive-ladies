@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import './styles/index.scss';
 import Header from "./components/Header";
@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import About from "./components/About";
 import Board from "./components/Board";
+
 
 function App() {
   const [colorTheme, setColorTheme] = useState("blue");
