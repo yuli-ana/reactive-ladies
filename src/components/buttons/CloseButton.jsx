@@ -4,9 +4,9 @@ import {
   } from "react-icons/fa";
 
 
-const CloseButton = () => {
+const CloseButton = ({click}) => {
     return (
-        <button style={{margin: "10px"}}><FaTimes/></button>
+        <button onClick={click} style={{margin: "10px"}}><FaTimes/></button>
     );
 }
 

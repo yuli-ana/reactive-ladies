@@ -16,15 +16,21 @@ const Column = ({column}) => {
     const { title, tickets } = column;
     const { columns, dispatch } = useContext(DataContext);
 
+    console.log(column);
+
     function handleAddTicket(){
         dispatch({type: "ADD_COLUMN"});
+    }
+
+    function handleCloseTicket(e){
+        dispatch({type: "CLOSE_COLUMN", payload: title });
     }
 
     
     return (
         <li style={box}>
             <AddButton click={handleAddTicket}/>
-            <CloseButton/>
+            <CloseButton click={handleCloseTicket}/>
             <h2>{title}</h2>
             <ul>
               {
