@@ -29,7 +29,6 @@ const TaskList = styled.div`
   min-height: 10rem;
 `;
 
-
 function MockColumn(props) {
   
   class InnerList extends Component {
@@ -40,7 +39,9 @@ function MockColumn(props) {
       return true;
     }
     render() {
-      return this.props.tickets.map((ticket, index) => (
+      const { handleDeleteTask, tickets, columnId } = props;
+      
+      return tickets.map((ticket, index) => (
           <MockTask 
             key={ticket.id} 
             ticket={ticket} 
@@ -50,6 +51,8 @@ function MockColumn(props) {
             setShowMenu={props.setShowMenu}
             showMenu={props.showMenu}
             setClickedTicketId={props.setClickedTicketId}
+            handleDeleteTask={handleDeleteTask} 
+            columnId={columnId}
           />
       ));
     }
@@ -69,7 +72,8 @@ function MockColumn(props) {
                 {...provided.droppableProps}
                 isDraggingOver={snapshot.isDraggingOver}
               >
-                  <InnerList tickets={props.tickets} />
+
+                <InnerList tickets={props.tickets} handleDeleteTask={props.handleDeleteTask} columnId={props.column.id} />
                 {provided.placeholder}
               </TaskList>
             )}

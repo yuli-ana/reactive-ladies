@@ -57,7 +57,8 @@ function RealDragDrop() {
   class InnerList extends PureComponent {
     render() {
       const { column, ticketMap, index } = this.props;
-      const tickets = column.ticketIds.map((ticketId) => ticketMap[ticketId]);
+      const tickets = column.ticketIds.map(ticketId => ticketMap[ticketId]);
+            
       return <MockColumn
         column={column}
         tickets={tickets}
@@ -69,6 +70,7 @@ function RealDragDrop() {
         setShowMenu={setShowMenu}
         showMenu={showMenu}
         setClickedTicketId={setClickedTicketId}
+        handleDeleteTask={handleDeleteTask}
         />;
     }
   }
@@ -117,7 +119,25 @@ function RealDragDrop() {
   // dispatch({type: "ADD_TASK", payload:{ taskId: uuid(), columnId: id} });
   }
 
+  function handleDeleteTask(ticketId, columnId) {
 
+    const deletedTasks = {
+      ...state,
+
+      columns: {
+        ...state.columns,
+        [columnId]: {
+          ...state.columns[columnId],
+
+          ticketIds: state.columns[columnId].ticketIds.filter(item => item !== ticketId)
+
+        }
+      }
+    } 
+
+    setState(deletedTasks);
+   
+  }
 
   // a function called on onDragEnd event (react-beautiful-dnd library)
   const onDragEnd = (result) => {

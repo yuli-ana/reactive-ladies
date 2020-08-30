@@ -45,6 +45,8 @@ function dataReducer(state, action){
         //     columnOrder: action.payload
         // };
           
+        case "DELETE_TICKET": 
+        return {...state, }
         default:
             return state;
     }

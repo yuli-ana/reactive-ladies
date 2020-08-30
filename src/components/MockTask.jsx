@@ -15,6 +15,8 @@ const Container = styled.div`
 `;
   
 function MockTask(props) {
+    
+    const {handleDeleteTask, ticket, columnId} = props;
 
   // function to close ContextMenu
   const handleClick = () => {
@@ -61,7 +63,7 @@ function MockTask(props) {
         isDragging={snapshot.isDragging}
         className='ticket'
         >
-          <CloseButton/>
+          <CloseButton click={() => handleDeleteTask(ticket.id, columnId)}/>
           {props.ticket.title}
         </Container>
       )}
