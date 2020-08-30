@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const ContextMenu = ({xPos, yPos, data, clickedTicketData}) => {
-
+  
   const [columns, setColumns] = useState([]);
 
   useEffect(() => {
@@ -16,16 +16,18 @@ const ContextMenu = ({xPos, yPos, data, clickedTicketData}) => {
 
   }, [clickedTicketData])
   
+  // make copy of the data state object
   const dataCopy = {};
   Object.assign(dataCopy, data);
   
+  // 
   const getTicketData = () => {
     let data = {};
 
     for (let key in dataCopy.columns) {
       const ticketToRemoveIdx = dataCopy.columns[key].ticketIds.findIndex(ticketIds => ticketIds === clickedTicketData.ticketId);
       if (Math.sign(ticketToRemoveIdx) !== -1) {
-        data.colId =  dataCopy.columns[key].id;
+        // data.colId =  dataCopy.columns[key].id;
         data.ticketIdx =  ticketToRemoveIdx;
       }
     }
@@ -57,7 +59,7 @@ const ContextMenu = ({xPos, yPos, data, clickedTicketData}) => {
   const handleClick = (columnId) => {
     const data = getTicketData();
 
-    const ticketArr = retainTicket(data.colId, data.ticketIdx);
+    const ticketArr = retainTicket(clickedTicketData.colId, data.ticketIdx);
 
     pushTicketToArr(columnId, ticketArr);
   }

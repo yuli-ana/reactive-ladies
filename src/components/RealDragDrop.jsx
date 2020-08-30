@@ -123,9 +123,6 @@ function RealDragDrop() {
 
   function handleDeleteTask(ticketId, columnId) {
 
-    console.log(ticketId);
-    console.log(columnId);
-
     const deletedTasks = {
       ...state,
 
