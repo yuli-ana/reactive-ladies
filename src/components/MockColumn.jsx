@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import MockTask from "./MockTask";
 import { Accordion, AccordionItem } from 'react-sanfona';
-
 import CloseButton from './buttons/CloseButton';
 import AddButton from './buttons/AddButton';
 
@@ -40,8 +39,6 @@ function MockColumn(props) {
     }
     render() {
       const { handleDeleteTask, tickets, column } = props;
-
-      console.log(column, "Inner list");
       
       return tickets.map((ticket, index) => (
           <MockTask 
@@ -52,7 +49,7 @@ function MockColumn(props) {
             setYPos={props.setYPos}
             setShowMenu={props.setShowMenu}
             showMenu={props.showMenu}
-            setClickedTicketId={props.setClickedTicketId}
+            setClickedTicketData={props.setClickedTicketData}
             handleDeleteTask={handleDeleteTask} 
             columnId={column} 
           />

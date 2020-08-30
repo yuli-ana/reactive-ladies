@@ -31,7 +31,7 @@ function MockTask(props) {
     props.setXPos(`${e.pageX}px`);
     props.setYPos(`${e.pageY}px`)
     props.setShowMenu(true);
-    props.setClickedTicketId(e.target.attributes[1].nodeValue);
+    props.setClickedTicketData({ticketId: e.target.attributes[1].nodeValue, colId: e.target.parentElement.attributes[0].nodeValue});
   }
   
   useEffect(() => {

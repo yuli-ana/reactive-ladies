@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const ContextMenu = ({xPos, yPos, data, clickedTicketId}) => {
+const ContextMenu = ({xPos, yPos, data, clickedTicketData}) => {
 
   const [columns, setColumns] = useState([]);
 
@@ -8,23 +8,22 @@ const ContextMenu = ({xPos, yPos, data, clickedTicketId}) => {
     const newColumns = [];
   
     for (let key in data.columns) {
+      if (data.columns[key].id !== clickedTicketData.colId)
       newColumns.push(data.columns[key]);
     };
-      console.log(columns[0].id);
-    // const superNewColumns = newColumns.filter(column => columnId !== currentColumnId)
-  
+    
     setColumns(newColumns);
 
-  }, [])
-
+  }, [clickedTicketData])
+  
   const dataCopy = {};
   Object.assign(dataCopy, data);
-
+  
   const getTicketData = () => {
     let data = {};
 
     for (let key in dataCopy.columns) {
-      const ticketToRemoveIdx = dataCopy.columns[key].ticketIds.findIndex(ticketIds => ticketIds === clickedTicketId);
+      const ticketToRemoveIdx = dataCopy.columns[key].ticketIds.findIndex(ticketIds => ticketIds === clickedTicketData.ticketId);
       if (Math.sign(ticketToRemoveIdx) !== -1) {
         data.colId =  dataCopy.columns[key].id;
         data.ticketIdx =  ticketToRemoveIdx;
