@@ -1,6 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const ContextMenu = ({xPos, yPos}) => {
+const ContextMenu = ({xPos, yPos, data}) => {
+
+  const [columns, setColumns] = useState([]);
+
+  useEffect(() => {
+    const newColumns = [];
+  
+    for (let key in data.columns) {
+      newColumns.push(data.columns[key]);
+    };
+  
+    setColumns(newColumns);
+
+  }, [])
+
+
   const styles = {
     position: 'absolute',
     top: yPos,

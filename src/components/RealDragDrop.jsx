@@ -57,7 +57,6 @@ function RealDragDrop() {
   const [yPos, setYPos] = useState('0px');
   const [showMenu, setShowMenu] = useState(false);
 
-
   class InnerList extends PureComponent {
     render() {
       const { column, ticketMap, index } = this.props;
@@ -260,7 +259,7 @@ function RealDragDrop() {
           </Container>
         )}
       </Droppable>
-      { showMenu ? <ContextMenu xPos={xPos} yPos={yPos}/> : null }
+      { showMenu ? <ContextMenu xPos={xPos} yPos={yPos} data={state}/> : null }
     </DragDropContext>
   );
 }

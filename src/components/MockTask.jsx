@@ -14,8 +14,8 @@ const Container = styled.div`
   background-color: ${(props) => (props.isDragging ? "lightgrey" : "yellow")};
 `;
   
-
 function MockTask(props) {
+  // const [event, setEvent] = useState(false);
 
   // function to close ContextMenu
   const handleClick = () => {
@@ -31,18 +31,18 @@ function MockTask(props) {
     props.setYPos(`${e.pageY}px`)
     props.setShowMenu(true);
   }
-
+  
   useEffect(() => {
     // grab all the ticket elements
     const tickets = document.getElementsByClassName('ticket');
-
+    
     document.addEventListener("click", handleClick);
     // turn HTMLCollection into an array
     Array.from(tickets).forEach(ticket => {
       // attach event listener to each ticket
       ticket.addEventListener("contextmenu", handleContextMenu);
     });
-
+    
     return () => {
       document.removeEventListener("click", handleClick);
       Array.from(tickets).forEach(ticket => {
@@ -50,17 +50,17 @@ function MockTask(props) {
       });
     };
   }, []);
-
+  
   return (
     <Draggable draggableId={props.ticket.id} index={props.index}>
       {(provided, snapshot) => (
-          <Container
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-            ref={provided.innerRef}
-            isDragging={snapshot.isDragging}
-            className='ticket'
-          >
+        <Container
+        {...provided.draggableProps}
+        {...provided.dragHandleProps}
+        ref={provided.innerRef}
+        isDragging={snapshot.isDragging}
+        className='ticket'
+        >
           <CloseButton/>
           {props.ticket.title}
         </Container>
