@@ -15,7 +15,6 @@ const Container = styled.div`
 `;
   
 function MockTask(props) {
-  // const [event, setEvent] = useState(false);
 
   // function to close ContextMenu
   const handleClick = () => {
@@ -30,7 +29,7 @@ function MockTask(props) {
     props.setXPos(`${e.pageX}px`);
     props.setYPos(`${e.pageY}px`)
     props.setShowMenu(true);
-    console.log(e.target.attributes[1].nodeValue);
+    props.setClickedTicketId(e.target.attributes[1].nodeValue);
   }
   
   useEffect(() => {

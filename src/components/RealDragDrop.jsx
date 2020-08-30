@@ -46,16 +46,13 @@ const Container = styled.div`
   display: flex;
 `;
 
-
-
-
-
 function RealDragDrop() {
 
   ////////// STATES FOR CONTEXT MENU //////////
   const [xPos, setXPos] = useState('0px');
   const [yPos, setYPos] = useState('0px');
   const [showMenu, setShowMenu] = useState(false);
+  const [clickedTicketId, setClickedTicketId] = useState('');
 
   class InnerList extends PureComponent {
     render() {
@@ -71,6 +68,7 @@ function RealDragDrop() {
         setYPos={setYPos}
         setShowMenu={setShowMenu}
         showMenu={showMenu}
+        setClickedTicketId={setClickedTicketId}
         />;
     }
   }
@@ -259,7 +257,16 @@ function RealDragDrop() {
           </Container>
         )}
       </Droppable>
-      { showMenu ? <ContextMenu xPos={xPos} yPos={yPos} data={state}/> : null }
+      { 
+        showMenu 
+        ? <ContextMenu 
+            xPos={xPos} 
+            yPos={yPos} 
+            data={state} 
+            clickedTicketId={clickedTicketId}
+          /> 
+        : null 
+      }
     </DragDropContext>
   );
 }

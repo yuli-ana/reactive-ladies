@@ -49,6 +49,7 @@ function MockColumn(props) {
             setYPos={props.setYPos}
             setShowMenu={props.setShowMenu}
             showMenu={props.showMenu}
+            setClickedTicketId={props.setClickedTicketId}
           />
       ));
     }
