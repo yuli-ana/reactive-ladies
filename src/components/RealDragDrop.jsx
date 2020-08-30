@@ -6,6 +6,7 @@ import MockColumn from "./MockColumn";
 import styled from "styled-components";
 import dataReducer from './dataReducer';
 import AddButton from './buttons/AddButton';
+import ContextMenu from './ContextMenu';
 
 
 const ids = [uuid(), uuid(), uuid()];
@@ -45,12 +46,13 @@ const Container = styled.div`
   display: flex;
 `;
 
-
-
-
-
 function RealDragDrop() {
 
+  ////////// STATES FOR CONTEXT MENU //////////
+  const [xPos, setXPos] = useState('0px');
+  const [yPos, setYPos] = useState('0px');
+  const [showMenu, setShowMenu] = useState(false);
+  const [clickedTicketId, setClickedTicketId] = useState('');
 
   class InnerList extends PureComponent {
     render() {
@@ -63,6 +65,11 @@ function RealDragDrop() {
         index={index} 
         handleAddTask={() => handleAddTask(column.id)}
         handleDeleteColumn={() => handleDeleteColumn(column.id)}
+        setXPos={setXPos}
+        setYPos={setYPos}
+        setShowMenu={setShowMenu}
+        showMenu={showMenu}
+        setClickedTicketId={setClickedTicketId}
         handleDeleteTask={handleDeleteTask}
         />;
     }
@@ -249,8 +256,6 @@ function RealDragDrop() {
     // dispatch({type: "ADD_COLUMN", payload: uuid()});
   }
 
-
-
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <AddButton click={handleAddColumn}/>
@@ -272,6 +277,16 @@ function RealDragDrop() {
           </Container>
         )}
       </Droppable>
+      { 
+        showMenu 
+        ? <ContextMenu 
+            xPos={xPos} 
+            yPos={yPos} 
+            data={state} 
+            clickedTicketId={clickedTicketId}
+          /> 
+        : null 
+      }
     </DragDropContext>
   );
 }

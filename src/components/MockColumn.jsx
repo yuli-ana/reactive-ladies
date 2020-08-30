@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import MockTask from "./MockTask";
+import { Accordion, AccordionItem } from 'react-sanfona';
+
 import CloseButton from './buttons/CloseButton';
 import AddButton from './buttons/AddButton';
 
@@ -18,7 +20,6 @@ const Title = styled.h3`
   padding: 0.8rem;
 `;
 
-
 // Change color when dragging here
 const TaskList = styled.div`
   padding: 0.8rem;
@@ -28,25 +29,34 @@ const TaskList = styled.div`
   min-height: 10rem;
 `;
 
-class InnerList extends Component {
-  shouldComponentUpdate(nextProps) {
-    if (nextProps.tickets === this.props.tickets) {
-      return false;
-    }
-    return true;
-  }
-
-  render() {
-    const { handleDeleteTask, tickets, columnId } = this.props;
-    
-    return tickets.map((ticket, index) => (
-      <MockTask handleDeleteTask={handleDeleteTask} key={ticket.id} columnId={columnId} ticket={ticket} 
-      index={index}  />
-    ));
-  }
-}
-
 function MockColumn(props) {
+  
+  class InnerList extends Component {
+    shouldComponentUpdate(nextProps) {
+      if (nextProps.tickets === this.props.tickets) {
+        return false;
+      }
+      return true;
+    }
+    render() {
+      const { handleDeleteTask, tickets, columnId } = props;
+      
+      return tickets.map((ticket, index) => (
+          <MockTask 
+            key={ticket.id} 
+            ticket={ticket} 
+            index={index} 
+            setXPos={props.setXPos}
+            setYPos={props.setYPos}
+            setShowMenu={props.setShowMenu}
+            showMenu={props.showMenu}
+            setClickedTicketId={props.setClickedTicketId}
+            handleDeleteTask={handleDeleteTask} 
+            columnId={columnId}
+          />
+      ));
+    }
+  }
 
   return (
     <Draggable draggableId={props.column.id} index={props.index}>
@@ -62,6 +72,7 @@ function MockColumn(props) {
                 {...provided.droppableProps}
                 isDraggingOver={snapshot.isDraggingOver}
               >
+
                 <InnerList tickets={props.tickets} handleDeleteTask={props.handleDeleteTask} columnId={props.column.id} />
                 {provided.placeholder}
               </TaskList>
