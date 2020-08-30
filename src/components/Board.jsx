@@ -56,7 +56,6 @@ function Board() {
     // Takes for arguments reducer function and initial Data (state)
     const [data, dispatch] = useReducer(dataReducer, initialData);
  
-
     // Sets initialData to our localStorage, each time I add ticket or column our state will update 
     // and call useEffect where I pass updated data
     useEffect(()=> {

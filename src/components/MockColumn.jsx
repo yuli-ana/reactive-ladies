@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import MockTask from "./MockTask";
+import CloseButton from './buttons/CloseButton';
+import AddButton from './buttons/AddButton';
 
 const Container = styled.div`
   margin: 0.8rem;
@@ -41,11 +43,15 @@ class InnerList extends Component {
 }
 
 function MockColumn(props) {
+
+
   return (
     <Draggable draggableId={props.column.id} index={props.index}>
       {(provided) => (
         <Container {...provided.draggableProps} ref={provided.innerRef}>
           <Title {...provided.dragHandleProps}>{props.column.title}</Title>
+          <CloseButton click={props.handleDeleteColumn}/>
+          <AddButton click={props.handleAddTask} style={{margin: 0}}/>
           <Droppable droppableId={props.column.id} type="task">
             {(provided, snapshot) => (
               <TaskList
