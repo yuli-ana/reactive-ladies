@@ -44,5 +44,15 @@
     "sass": "^1.26.10",
     "sass-loader": "^10.0.1",
     "webpack": "^4.42.0"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuli-ana/reactive-ladies.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuli-ana/reactive-ladies/issues"
   }
 }
