@@ -30,6 +30,7 @@ function MockTask(props) {
     props.setXPos(`${e.pageX}px`);
     props.setYPos(`${e.pageY}px`)
     props.setShowMenu(true);
+    console.log(e.target.attributes[1].nodeValue);
   }
   
   useEffect(() => {
