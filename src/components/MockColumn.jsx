@@ -39,7 +39,9 @@ function MockColumn(props) {
       return true;
     }
     render() {
-      const { handleDeleteTask, tickets, columnId } = props;
+      const { handleDeleteTask, tickets, column } = props;
+
+      console.log(column, "Inner list");
       
       return tickets.map((ticket, index) => (
           <MockTask 
@@ -52,7 +54,7 @@ function MockColumn(props) {
             showMenu={props.showMenu}
             setClickedTicketId={props.setClickedTicketId}
             handleDeleteTask={handleDeleteTask} 
-            columnId={columnId}
+            columnId={column} 
           />
       ));
     }

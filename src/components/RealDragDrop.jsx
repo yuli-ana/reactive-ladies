@@ -64,7 +64,7 @@ function RealDragDrop() {
         tickets={tickets}
         index={index} 
         handleAddTask={() => handleAddTask(column.id)}
-        handleDeleteColumn={() => handleDeleteColumn(column.id)}
+        handleDeleteColumn={handleDeleteColumn}
         setXPos={setXPos}
         setYPos={setYPos}
         setShowMenu={setShowMenu}
@@ -81,6 +81,8 @@ function RealDragDrop() {
   // console.log(data);
 
   function handleDeleteColumn(idArgument){
+    console.log(idArgument);
+
     const { [idArgument]: value, ...rest } = state.columns;
     const columnsAfterDelete = {
         ...state,
@@ -120,6 +122,9 @@ function RealDragDrop() {
   }
 
   function handleDeleteTask(ticketId, columnId) {
+
+    console.log(ticketId);
+    console.log(columnId);
 
     const deletedTasks = {
       ...state,

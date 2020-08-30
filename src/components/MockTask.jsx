@@ -63,7 +63,7 @@ function MockTask(props) {
         isDragging={snapshot.isDragging}
         className='ticket'
         >
-          <CloseButton click={() => handleDeleteTask(ticket.id, columnId)}/>
+          <CloseButton click={() => handleDeleteTask(ticket.id, columnId.id)}/>
           {props.ticket.title}
         </Container>
       )}
