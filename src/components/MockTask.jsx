@@ -20,7 +20,7 @@ function MockTask(props) {
           ref={provided.innerRef}
           isDragging={snapshot.isDragging}
         >
-          {props.ticket.title}
+          {props.ticket.details}
         </Container>
       )}
     </Draggable>

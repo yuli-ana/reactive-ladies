@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import MockTask from "./MockTask";
+import { Accordion, AccordionItem } from 'react-sanfona';
+
 
 const Container = styled.div`
   margin: 0.8rem;
@@ -15,7 +17,6 @@ const Container = styled.div`
 const Title = styled.h3`
   padding: 0.8rem;
 `;
-
 
 // Change color when dragging here
 const TaskList = styled.div`
@@ -35,7 +36,9 @@ class InnerList extends Component {
   }
   render() {
     return this.props.tickets.map((ticket, index) => (
-      <MockTask key={ticket.id} ticket={ticket} index={index} />
+      <AccordionItem title={ticket.title}>
+        <MockTask key={ticket.id} ticket={ticket} index={index} />
+      </AccordionItem>
     ));
   }
 }
@@ -53,7 +56,9 @@ function MockColumn(props) {
                 {...provided.droppableProps}
                 isDraggingOver={snapshot.isDraggingOver}
               >
-                <InnerList tickets={props.tickets} />
+                <Accordion>
+                  <InnerList tickets={props.tickets} />
+                </Accordion>
                 {provided.placeholder}
               </TaskList>
             )}
