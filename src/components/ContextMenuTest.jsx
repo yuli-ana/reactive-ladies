@@ -1,29 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
 
 function ContextMenuTest() {
-  const [xPos, setXPos] = useState('0px');
-  const [yPos, setYPos] = useState('0px');
-  const [showMenu, setShowMenu] = useState(false);
+  // const [xPos, setXPos] = useState('0px');
+  // const [yPos, setYPos] = useState('0px');
+  // const [showMenu, setShowMenu] = useState(false);
 
-  const ticket = useRef(null);
+  // const customMenu = () => {
+  //   const styles = {
+  //     position: 'absolute',
+  //     top: yPos,
+  //     left: xPos,
+  //     zIndex: 10,
+  //     backgroundColor: '#F9E5E6'
+  //   }
 
-  const customMenu = () => {
-    const styles = {
-      position: 'absolute',
-      top: yPos,
-      left: xPos,
-      zIndex: 10,
-      backgroundColor: '#F9E5E6'
-    }
-
-    return (
-      <ul style={styles}>
-        <li><button>Move Card to "To Do" Column</button></li>
-        <li><button>Move Card to "In Progress" Column</button></li>
-        <li><button>Move Card to "Done" Column</button></li>
-      </ul>
-    )
-  }
+  //   return (
+  //     <ul style={styles}>
+  //       <li><button>Move Card to "To Do" Column</button></li>
+  //       <li><button>Move Card to "In Progress" Column</button></li>
+  //       <li><button>Move Card to "Done" Column</button></li>
+  //     </ul>
+  //   )
+  // }
   
   const handleClick = () => {
     if (showMenu) {
@@ -39,12 +37,18 @@ function ContextMenuTest() {
   }
 
   useEffect(() => {
+    const tickets = document.getElementsByClassName('ticket');
+
     document.addEventListener("click", handleClick);
-    ticket.current.addEventListener("contextmenu", handleContextMenu);
+    Array.from(tickets).forEach(ticket => {
+      ticket.addEventListener("contextmenu", handleContextMenu);
+    });
 
     return () => {
-    document.removeEventListener("click", handleClick);
-    ticket.current.removeEventListener("contextmenu", handleContextMenu);
+      document.removeEventListener("click", handleClick);
+      Array.from(tickets).forEach(ticket => {
+        ticket.removeEventListener("contextmenu", handleContextMenu);
+      });
     };
   });
 
@@ -52,7 +56,10 @@ function ContextMenuTest() {
   return (
     <>
       <h2>Context Menu Test</h2>
-      <div ref={ticket} className='ticket' style={{padding: '50px 100px', textAlign: 'center', backgroundColor: '#fff', border: '1px solid #777', width: '350px', margin: '0 auto'}}>
+      <div className='ticket' style={{padding: '50px 100px', textAlign: 'center', backgroundColor: '#fff', border: '1px solid #777', width: '350px', margin: '0 auto'}}>
+        <h3>Create Context Menu</h3>
+      </div>
+      <div className='ticket' style={{padding: '50px 100px', textAlign: 'center', backgroundColor: '#fff', border: '1px solid #777', width: '350px', margin: '0 auto'}}>
         <h3>Create Context Menu</h3>
       </div>
       { showMenu ? customMenu() : null }

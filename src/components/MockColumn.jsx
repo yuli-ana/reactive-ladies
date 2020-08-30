@@ -29,24 +29,30 @@ const TaskList = styled.div`
   min-height: 10rem;
 `;
 
-class InnerList extends Component {
-  shouldComponentUpdate(nextProps) {
-    if (nextProps.tickets === this.props.tickets) {
-      return false;
-    }
-    return true;
-  }
-  render() {
-    return this.props.tickets.map((ticket, index) => (
-      <AccordionItem title={ticket.title}>
-        <MockTask key={ticket.id} ticket={ticket} index={index} />
-      </AccordionItem>
-    ));
-  }
-}
 
 function MockColumn(props) {
-
+  
+  class InnerList extends Component {
+    shouldComponentUpdate(nextProps) {
+      if (nextProps.tickets === this.props.tickets) {
+        return false;
+      }
+      return true;
+    }
+    render() {
+      return this.props.tickets.map((ticket, index) => (
+          <MockTask 
+            key={ticket.id} 
+            ticket={ticket} 
+            index={index} 
+            setXPos={props.setXPos}
+            setYPos={props.setYPos}
+            setShowMenu={props.setShowMenu}
+            showMenu={props.showMenu}
+          />
+      ));
+    }
+  }
 
   return (
     <Draggable draggableId={props.column.id} index={props.index}>
@@ -62,9 +68,7 @@ function MockColumn(props) {
                 {...provided.droppableProps}
                 isDraggingOver={snapshot.isDraggingOver}
               >
-                <Accordion>
                   <InnerList tickets={props.tickets} />
-                </Accordion>
                 {provided.placeholder}
               </TaskList>
             )}
