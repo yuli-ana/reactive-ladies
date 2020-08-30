@@ -59,7 +59,6 @@ const ContextMenu = ({xPos, yPos, data, clickedTicketId}) => {
     const ticketArr = retainTicket(data.colId, data.ticketIdx);
 
     pushTicketToArr(columnId, ticketArr);
-
   }
 
   const ulStyles = {
