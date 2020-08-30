@@ -11,6 +11,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@atlaskit/css-reset": "^6.0.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -22,6 +23,7 @@
     "react-router-dom": "^5.2.0",
     "react-sanfona": "^1.5.0",
     "react-scripts": "3.4.1",
+    "styled-components": "^5.1.1",
     "uuid": "^8.3.0"
   },
   "eslintConfig": {
