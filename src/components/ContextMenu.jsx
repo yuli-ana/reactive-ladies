@@ -10,6 +10,8 @@ const ContextMenu = ({xPos, yPos, data, clickedTicketId}) => {
     for (let key in data.columns) {
       newColumns.push(data.columns[key]);
     };
+      console.log(columns[0].id);
+    // const superNewColumns = newColumns.filter(column => columnId !== currentColumnId)
   
     setColumns(newColumns);
 

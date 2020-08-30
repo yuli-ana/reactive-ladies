@@ -1,5 +1,5 @@
 import React from 'react';
-import CloseButton from './buttons/CloseButton';
+import CloseButton from "./buttons/CloseButton";
 
 
 const styleTicket ={
@@ -11,6 +11,7 @@ const styleTicket ={
 
 
 function Ticket(){
+
 
   return (
     <li style={styleTicket}>
