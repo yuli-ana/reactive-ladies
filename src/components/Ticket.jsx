@@ -10,9 +10,7 @@ const styleTicket ={
 }
 
 
-function Ticket({ticket}){
-
- const {title, details} = ticket;
+function Ticket(){
 
   return (
     <li style={styleTicket}>

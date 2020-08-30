@@ -1,71 +1,116 @@
-import React, { PureComponent, useState } from "react";
+import React, { PureComponent, useState, useReducer } from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { v4 as uuid } from "uuid";
 import "@atlaskit/css-reset";
 import MockColumn from "./MockColumn";
 import styled from "styled-components";
+import dataReducer from './dataReducer';
+import AddButton from './buttons/AddButton';
+
+
+const ids = [uuid(), uuid(), uuid()];
+
+const ticketsId = [uuid(), uuid(), uuid(), uuid()];
 
 const defaultState = {
   tickets: {
-    "ticket-1": {
-      id: "ticket-1",
-      title: "React",
-      details: "write code for board component"
-    },
-    "ticket-2": {
-      id: "ticket-2",
-      title: "Mintbean",
-      details: "write code for board component"
-    },
-    "ticket-3": {
-      id: "ticket-3",
-      title: "JavaScript",
-      details: "write code for board component"
-    },
-    "ticket-4": {
-      id: "ticket-4",
-      title: "DragNDrop",
-      details: "write code for board component"
-    }
+    [ticketsId[0]]: { id: ticketsId[0], title: 'React', details: 'write code for board component' },
+    [ticketsId[1]]:  { id: ticketsId[1], title: 'Mintbean', details: 'write code for board component' },
+    [ticketsId[2]]: { id: ticketsId[2], title: 'JavaScript', details: 'write code for board component' },
+    [ticketsId[3]]: { id: ticketsId[3], title: 'JavaScript', details: 'write code for board component' },
   },
   columns: {
-    "column-1": {
-      id: "column-1",
-      title: "To Do",
-      ticketIds: ["ticket-1", "ticket-2", "ticket-3", "ticket-4"]
+    [ids[0]]: {
+        id: ids[0],
+        title: 'To Do',
+        ticketIds: [...ticketsId]
     },
-    "column-2": {
-      id: "column-2",
-      title: "In Progress",
-      ticketIds: []
+    [ids[1]]: {
+        id: ids[1],
+        title: 'In Progress',
+        ticketIds: []
     },
-    "column-3": {
-      id: "column-3",
-      title: "Done",
-      ticketIds: []
-    }
+    [ids[2]]: {
+        id: ids[2],
+        title: 'Done',
+        ticketIds: []
+    },
   },
   // Facilitate reordering of the columns
-  columnOrder: ["column-1", "column-2", "column-3"]
-};
+  columnOrder: [...ids],
+  };
 
   
 const Container = styled.div`
   display: flex;
 `;
 
-class InnerList extends PureComponent {
-  render() {
-    const { column, ticketMap, index } = this.props;
-    const tickets = column.ticketIds.map((ticketId) => ticketMap[ticketId]);
-    return <MockColumn column={column} tickets={tickets} index={index} />;
-  }
-}
+
 
 
 
 function RealDragDrop() {
+
+
+  class InnerList extends PureComponent {
+    render() {
+      const { column, ticketMap, index } = this.props;
+      const tickets = column.ticketIds.map((ticketId) => ticketMap[ticketId]);
+      return <MockColumn
+        column={column}
+        tickets={tickets}
+        index={index} 
+        handleAddTask={() => handleAddTask(column.id)}
+        handleDeleteColumn={() => handleDeleteColumn(column.id)}
+        />;
+    }
+  }
+
   const [state, setState] = useState(defaultState);
+
+  // const [data, dispatch] = useReducer(dataReducer, state);
+  // console.log(data);
+
+  function handleDeleteColumn(idArgument){
+    const { [idArgument]: value, ...rest } = state.columns;
+    const columnsAfterDelete = {
+        ...state,
+        columnOrder: state.columnOrder.filter(item => item !== idArgument),
+        columns: {...rest}
+    }
+  
+    setState(columnsAfterDelete)
+    // dispatch({type: "DELETE_COLUMN", payload: id });
+  }
+
+
+  function handleAddTask(idArgument){
+    const randomTicketId = uuid();
+    const addedTasks = {
+        ...state,
+
+        tickets: {
+            ...state.tickets, 
+            [randomTicketId]: {
+                id: randomTicketId, 
+                title: '', 
+                details: '', 
+            },
+        },
+        columns: {
+            ...state.columns,
+            [idArgument]: {
+                ...state.columns[idArgument],
+                ticketIds: [...state.columns[idArgument].ticketIds, randomTicketId]
+            }
+        }
+    }
+
+    setState(addedTasks)
+  // dispatch({type: "ADD_TASK", payload:{ taskId: uuid(), columnId: id} });
+  }
+
+
 
   // a function called on onDragEnd event (react-beautiful-dnd library)
   const onDragEnd = (result) => {
@@ -97,6 +142,11 @@ function RealDragDrop() {
         columnOrder: newColumnOrder
       };
       setState(newState);
+      
+     
+      // dispatch({type: "UPDATE_COLUMN_ORDER", payload: newColumnOrder})
+      // console.log('column order', newColumnOrder)
+      
       return;
     }
 
@@ -166,8 +216,23 @@ function RealDragDrop() {
     setState(newState);
   };
 
+  function handleAddColumn(){
+    const randomId = uuid();
+    const addedColumns = {
+      ...state,
+      columnOrder: [...state.columnOrder, randomId],
+      columns: {...state.columns,
+      [randomId]: {id: randomId, title: '', ticketIds: []} }
+  }
+  
+    setState(addedColumns)
+    // dispatch({type: "ADD_COLUMN", payload: uuid()});
+  }
+
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
+      <AddButton click={handleAddColumn}/>
       <Droppable droppableId="all-columns" direction="horizontal" type="column">
         {(provided) => (
           <Container {...provided.droppableProps} ref={provided.innerRef}>

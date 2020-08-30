@@ -7,7 +7,7 @@ import {
 const AddButton = ({click}) => {
 
     return (
-        <button style={{margin: 5}} onClick={click}><FaPlusCircle/></button>
+        <button onClick={click} style={{margin: 5}}><FaPlusCircle/></button>
     );
 }
 
