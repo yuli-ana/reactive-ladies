@@ -1,5 +1,5 @@
 import React from "react";
-import FakeDragDrop from './FakeDragDrop';
+// import FakeDragDrop from './FakeDragDrop';
 import ContextMenuTest from './ContextMenuTest';
 import SanfonaTest from './SanfonaTest';
 import RealDragDrop from './RealDragDrop'
