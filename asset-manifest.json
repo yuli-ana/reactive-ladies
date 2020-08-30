@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "./static/css/main.b7142f02.chunk.css",
+    "main.js": "./static/js/main.d93aab03.chunk.js",
+    "main.js.map": "./static/js/main.d93aab03.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.893301b1.js",
+    "runtime-main.js.map": "./static/js/runtime-main.893301b1.js.map",
+    "static/css/2.3107b260.chunk.css": "./static/css/2.3107b260.chunk.css",
+    "static/js/2.aac0fa52.chunk.js": "./static/js/2.aac0fa52.chunk.js",
+    "static/js/2.aac0fa52.chunk.js.map": "./static/js/2.aac0fa52.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.81f28541c5dfdcd5a95428f496724c3e.js": "./precache-manifest.81f28541c5dfdcd5a95428f496724c3e.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.3107b260.chunk.css.map": "./static/css/2.3107b260.chunk.css.map",
+    "static/css/main.b7142f02.chunk.css.map": "./static/css/main.b7142f02.chunk.css.map",
+    "static/js/2.aac0fa52.chunk.js.LICENSE.txt": "./static/js/2.aac0fa52.chunk.js.LICENSE.txt",
+    "static/media/mintbean.png": "./static/media/mintbean.cf18b629.png",
+    "static/media/undraw_dev_productivity_umsq.svg": "./static/media/undraw_dev_productivity_umsq.5570c207.svg",
+    "static/media/undraw_online_organizer_ofxm.svg": "./static/media/undraw_online_organizer_ofxm.d7c62bef.svg",
+    "static/media/undraw_subscriber_vabu.svg": "./static/media/undraw_subscriber_vabu.ff5566a0.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.893301b1.js",
+    "static/css/2.3107b260.chunk.css",
+    "static/js/2.aac0fa52.chunk.js",
+    "static/css/main.b7142f02.chunk.css",
+    "static/js/main.d93aab03.chunk.js"
+  ]
+}
