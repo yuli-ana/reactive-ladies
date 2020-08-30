@@ -15,7 +15,12 @@ const Container = styled.div`
 `;
   
 
+
+
 function MockTask(props) {
+
+  const {handleDeleteTask, ticket, columnId} = props;
+
   return (
     <Draggable draggableId={props.ticket.id} index={props.index}>
       {(provided, snapshot) => (
@@ -25,7 +30,7 @@ function MockTask(props) {
             ref={provided.innerRef}
             isDragging={snapshot.isDragging}
           >
-          <CloseButton/>
+          <CloseButton click={() => handleDeleteTask(ticket.id, columnId)}/>
           {props.ticket.title}
         </Container>
       )}

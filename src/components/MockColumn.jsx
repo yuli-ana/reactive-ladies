@@ -35,15 +35,18 @@ class InnerList extends Component {
     }
     return true;
   }
+
   render() {
-    return this.props.tickets.map((ticket, index) => (
-      <MockTask key={ticket.id} ticket={ticket} index={index} />
+    const { handleDeleteTask, tickets, columnId } = this.props;
+    
+    return tickets.map((ticket, index) => (
+      <MockTask handleDeleteTask={handleDeleteTask} key={ticket.id} columnId={columnId} ticket={ticket} 
+      index={index}  />
     ));
   }
 }
 
 function MockColumn(props) {
-
 
   return (
     <Draggable draggableId={props.column.id} index={props.index}>
@@ -59,7 +62,7 @@ function MockColumn(props) {
                 {...provided.droppableProps}
                 isDraggingOver={snapshot.isDraggingOver}
               >
-                <InnerList tickets={props.tickets} />
+                <InnerList tickets={props.tickets} handleDeleteTask={props.handleDeleteTask} columnId={props.column.id} />
                 {provided.placeholder}
               </TaskList>
             )}
