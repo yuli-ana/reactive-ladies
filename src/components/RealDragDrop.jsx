@@ -33,10 +33,10 @@ const ticketsId = [uuid(), uuid(), uuid(), uuid()];
 
 const defaultState = {
   tickets: {
-    [ticketsId[0]]: { id: ticketsId[0], title: 'React', details: 'write code for board component' },
-    [ticketsId[1]]:  { id: ticketsId[1], title: 'Mintbean', details: 'write code for board component' },
-    [ticketsId[2]]: { id: ticketsId[2], title: 'JavaScript', details: 'write code for board component' },
-    [ticketsId[3]]: { id: ticketsId[3], title: 'JavaScript', details: 'write code for board component' },
+    [ticketsId[0]]: { id: ticketsId[0], title: 'Hackathon', details: 'Happy hacking!' },
+    [ticketsId[1]]:  { id: ticketsId[1], title: 'Snackathon', details: 'Snacks are important!' },
+    [ticketsId[2]]: { id: ticketsId[2], title: 'Mintbean', details: 'Hello fellow hackers!' },
+    [ticketsId[3]]: { id: ticketsId[3], title: 'React', details: 'Hire us!' },
   },
   columns: {
     [ids[0]]: {
