@@ -6,6 +6,9 @@ import junoLogo from '../assets/juno-logo.png';
 import reactLogo from '../assets/reactIcon.png';
 import imgTwo from '../assets/undraw_subscriber_vabu.svg';
 import imgThree from '../assets/undraw_dev_productivity_umsq.svg';
+import eyel from '../assets/eyel.jpg'
+import oksana from '../assets/oksana.jpg'
+import yuliana from '../assets/yuliana.jpg'
 import {
   FaLinkedinIn,
   FaExternalLinkAlt,
@@ -14,10 +17,7 @@ import {
 } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
-
 function Home() {
-
-
 
   const handleSubscribe = () => {
     Swal.fire({
@@ -48,7 +48,7 @@ function Home() {
           <p>From a startup to a market leader! Together, they translated their vision into an innovative app that helps managing your workflow efficiently and do more what matters the most.</p>
           <ul className='foundersContainer'>
             <li className='foundersCard'>
-              <img src='https://placeimg.com/400/400/people' />
+              <img src={eyel} />
               <h3>Eyel Mordido</h3>
               <p>A driven Front-End developer and clean design evangelist addicted to problem-solving</p>
               <ul className='foundersSns'>
@@ -58,7 +58,7 @@ function Home() {
               </ul>
             </li>
             <li className='foundersCard'>
-              <img src='https://placeimg.com/400/400/people' />
+              <img src={yuliana} />
               <h3>Yuliana Hazda</h3>
               <p> An enthusiastic visionaire and a talented Front-End developer in love with building interactive websites</p>
               <ul className='foundersSns'>
@@ -68,7 +68,7 @@ function Home() {
               </ul>
             </li>
             <li className='foundersCard'>
-              <img src='https://placeimg.com/400/400/people' />
+              <img src={oksana} />
               <h3>Oksana Samokhvalova</h3>
               <p>An entepreneur at heart and a Web developer by choice passionate about creating high-impact products</p>
               <ul className='foundersSns'>

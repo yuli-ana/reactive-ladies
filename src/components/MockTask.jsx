@@ -59,13 +59,13 @@ const Textarea = styled.textarea `
 const Accordion = styled.div`
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.6s ease-out;
+  transition: max-height 0.4s ease-out;
 `;
 
 const AccordionTwo = styled.div`
   max-height: 100vh;
   overflow: hidden;
-  transition: max-height 0.6s ease-in;
+  transition: max-height 0.4s ease-in;
 `;
 
 
@@ -110,7 +110,7 @@ function MockTask(props) {
   
   useEffect(() => {
     // grab all the ticket elements
-    const tickets = document.getElementsByClassName('ticket');
+    const tickets = document.getElementsByClassName('task');
     
     document.addEventListener("click", handleClick);
     // turn HTMLCollection into an array
@@ -127,8 +127,6 @@ function MockTask(props) {
     };
   }, []);
 
-
-  // TO DO //
   const openTicketDetails = (e) => {
     if (e.target.classList[2] === 'ticket') {
       !isOpen
@@ -136,10 +134,6 @@ function MockTask(props) {
       : setIsOpen(false);
     }
   }
-
-  
-
-  
 
   function handleTaskTitle(e){
     setTitle(e.target.value); 

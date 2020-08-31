@@ -69,14 +69,13 @@ const ContextMenu = ({xPos, yPos, data, clickedTicketData}) => {
     top: yPos,
     left: xPos,
     zIndex: 10,
-    backgroundColor: '#F9E5E6',
   }
 
   const columnsCopy = [...columns];
   const filteredColumns = columnsCopy.filter(column => column.id !== clickedTicketData.colId)
 
   return (
-    <ul style={ulStyles}>
+    <ul className='contextMenu' style={ulStyles}>
       {
         filteredColumns.map(column => {
           return <li key={column.id}><button onClick={() => handleClick(column.id)}>Move Card to "{column.title}" Column</button></li>
