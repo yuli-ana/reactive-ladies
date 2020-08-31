@@ -9,7 +9,7 @@ const AddDetailsButton = ({submit}) => {
         <>
         <button type="submit" data-tip data-for='addDetails'><FaSave /></button>
         <ReactTooltip id='addDetails'>
-            <span>Edit task details</span>
+            <span>Click here to save</span>
         </ReactTooltip>
         </>
     );
