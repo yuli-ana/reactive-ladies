@@ -3,12 +3,12 @@ import googlePlay from '../assets/128x128.jpg'
 import appleStore from '../assets/128x128copy.jpg' 
 import {
   FaLinkedinIn,
-  FaExternalLinkAlt,
+  FaInstagram,
   FaTwitter,
   FaRegEnvelope,
 } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-import SelectLanguage from './SelectLanguage'
+import SelectLanguage from './SelectLanguage';
 
 
 const Footer = (props) => {
@@ -34,21 +34,21 @@ const Footer = (props) => {
           <a href='#'><FaLinkedinIn /></a>
           </li>
           <li>
-            <a href='#'><FaExternalLinkAlt /></a>
+            <a href='#'><FaInstagram /></a>
           </li>
           <li>
             <a href='#'><FaTwitter /></a>
           </li>
-          <li>
+          {/* <li>
             <a href='#'><FaRegEnvelope /></a>
-          </li>
+          </li> */}
         </ul>
         <div className='languageSelect'>
           <label htmlFor='language' className='visuallyHidden'>Select language</label>
           <SelectLanguage/>
         </div>
         <ul className='appDl'>
-          <li>
+          <li data-tip data-for="happyFace">
             <a onClick={()=> showAlert('Google Play')}><img src={googlePlay}/></a>
           </li>
           <li>
@@ -60,5 +60,6 @@ const Footer = (props) => {
     </footer>
   );
 };
+
 
 export default Footer;

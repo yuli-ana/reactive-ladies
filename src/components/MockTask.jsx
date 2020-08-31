@@ -4,6 +4,7 @@ import { Draggable } from "react-beautiful-dnd";
 import CloseButton from './buttons/CloseButton';
 import AddDetailsButton from './buttons/AddDetailsButton';
 import { v4 as uuid } from "uuid";
+import ReactTooltip from 'react-tooltip';
 
 const Container = styled.div`
   padding: 0.8rem;
@@ -101,24 +102,17 @@ function MockTask(props) {
 
 
   // TO DO //
-  const openTicketDetails = () => {
-    !isOpen
-    ? setIsOpen(true)
-    : setIsOpen(false);
+  const openTicketDetails = (e) => {
+    if (e.target.classList[2] === 'ticket') {
+      !isOpen
+      ? setIsOpen(true)
+      : setIsOpen(false);
+    }
   }
 
-  const openTicketDetailsStyles = {
-    display: 'block',
-    maxHeight: 'auto',
-    overflow: 'initial',
-  }
+  
 
-  const ticketDetailsStyles = {
-    display: 'none',
-    maxHeight: 0,
-    overflow: 'hidden',
-    transition: 'maxHeight 0.4s'
-  }
+  
 
   function handleTaskTitle(e){
     setTitle(e.target.value); 
@@ -152,6 +146,7 @@ function MockTask(props) {
     <Draggable draggableId={props.ticket.id} index={props.index}>
       {(provided, snapshot) => (
         <Container
+        data-tip data-for='drag'
         {...provided.draggableProps}
         {...provided.dragHandleProps}
         ref={provided.innerRef}
@@ -159,7 +154,7 @@ function MockTask(props) {
         className="task"
         onClick={openTicketDetails}
         >
-          <form onSubmit={handleAddTaskDescription}>
+           <form onSubmit={handleAddTaskDescription} data-tip data-for='drag'>
             <div className="task-header">
               <div className="task-title">
               <label htmlFor="task">
@@ -171,10 +166,15 @@ function MockTask(props) {
                 <CloseButton click={() => handleDeleteTask(ticket.id, columnId.id)}/>
               </div>
             </div>
+           <div className={!isOpen ? "ticketDetailsStyles" : "openTicketDetailsStyles"}>
             <label>
                 <Textarea placeholder="Enter description" value={details} onChange={handleTaskDetails} />
              </label>
+            </div>
           </form>
+          <ReactTooltip id='drag'>
+            <span>Right-click or drag</span>
+        </ReactTooltip>
         </Container>
       )}
     </Draggable>

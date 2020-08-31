@@ -5,6 +5,7 @@ import MockTask from "./MockTask";
 import AddDetailsButton from './buttons/AddDetailsButton';
 import CloseButton from './buttons/CloseButton';
 import AddButton from './buttons/AddButton';
+import ReactTooltip from 'react-tooltip';
 
 const Container = styled.div`
   margin: 0.8rem;

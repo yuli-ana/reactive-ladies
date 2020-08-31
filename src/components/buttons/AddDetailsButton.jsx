@@ -2,10 +2,16 @@ import React from "react";
 import {
     FaSave
   } from "react-icons/fa";
+  import ReactTooltip from 'react-tooltip';
 
 const AddDetailsButton = ({submit}) => {
     return (
-        <button type="submit"><FaSave /></button>
+        <>
+        <button type="submit" data-tip data-for='addDetails'><FaSave /></button>
+        <ReactTooltip id='addDetails'>
+            <span>Edit task details</span>
+        </ReactTooltip>
+        </>
     );
 }
 
