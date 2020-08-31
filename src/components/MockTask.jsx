@@ -8,24 +8,52 @@ import ReactTooltip from 'react-tooltip';
 
 const Container = styled.div`
   padding: 0.8rem;
-  border: 0.1rem solid lightgrey;
   border-radius: 0.2rem;
   margin-bottom: 0.8rem;
-  margin: 10;
-  width: "100%";
-  border: "1px solid black";
-  background-color: ${(props) => (props.isDragging ? "lightgrey" : "yellow")};
+  width: 100%;
+  box-shadow: 0 1px 1px 0 rgba(66, 66, 66, 0.08), 0 1px 3px 1px rgba(66, 66, 66, 0.16);
+  transition: all 300ms ease-in;
+  background-color: ${(props) => (props.isDragging ? "#fafafa" : "white")};
+  opacity: ${(props) => (props.isDragging ? "0.7" : "1")};
+
 `;
 
 const Input = styled.input `
-border: none;
-padding: 0.8rem;
-background: transparent;
+  padding: 5px;  
+  border: none;
+  
+  background: transparent;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  &:focus {
+    outline: none;
+    color: black;
+    background: transparent;
+  }
 `;
 
 const Textarea = styled.textarea `
-background: transparent;
-border: none;
+  padding: 5px;
+  background: transparent;
+  border: none;
+  resize: none;
+  display: block;
+  width: 100%;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  &:focus {
+    outline: none;
+    color: black;
+    background: transparent;
+  }
 `;
   
 function MockTask(props) {
@@ -123,19 +151,25 @@ function MockTask(props) {
         {...provided.dragHandleProps}
         ref={provided.innerRef}
         isDragging={snapshot.isDragging}
-        className='ticket'
-        onClick={(e) => openTicketDetails(e)}
+        className="task"
+        onClick={openTicketDetails}
         >
-          <CloseButton click={() => handleDeleteTask(ticket.id, columnId.id)}/>
-          <form onSubmit={handleAddTaskDescription} data-tip data-for='drag'>
-            <label htmlFor="task">
-              <Input type="text" value={title} name="task" placeholder="Title" onChange={handleTaskTitle} />
-            </label>
-            <AddDetailsButton />
-            <div className={!isOpen ? "ticketDetailsStyles" : "openTicketDetailsStyles"}>
-              <label>
-                  <Textarea value={details} onChange={handleTaskDetails} />
+           <form onSubmit={handleAddTaskDescription} data-tip data-for='drag'>
+            <div className="task-header">
+              <div className="task-title">
+              <label htmlFor="task">
+                <Input autoFocus={title.length === 0 ? true : false} type="text" autoComplete="off" value={title} name="task" placeholder="Enter title" onChange={handleTaskTitle} />
               </label>
+              </div>
+              <div className="task-action">
+                <AddDetailsButton />
+                <CloseButton click={() => handleDeleteTask(ticket.id, columnId.id)}/>
+              </div>
+            </div>
+           <div className={!isOpen ? "ticketDetailsStyles" : "openTicketDetailsStyles"}>
+            <label>
+                <Textarea placeholder="Enter description" value={details} onChange={handleTaskDetails} />
+             </label>
             </div>
           </form>
           <ReactTooltip id='drag'>

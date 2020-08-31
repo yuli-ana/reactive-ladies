@@ -9,27 +9,34 @@ import ReactTooltip from 'react-tooltip';
 
 const Container = styled.div`
   margin: 0.8rem;
-  border: 0.1rem solid lightgrey;
   border-radius: 0.2rem;
   width: 22rem;
   display: flex;
   flex-direction: column;
-`;
-
+  `;
+  
 const Input = styled.input `
-border: none;
-padding: 0.8rem;
-background: transparent;
+  border: none;
+  padding: 0.8rem;
+  background: transparent;
 `;
 
 // Change color when dragging here
 const TaskList = styled.div`
-  padding: 0.8rem;
+  padding-top: 10px;
   transition: background-color 0.2s ease;
   flex-grow: 1;
-  background-color: ${(props) => (props.isDraggingOver ? "#E6FBF6" : "white")};
+  background-color: ${(props) => (props.isDraggingOver ? "#E6FBF6" : "transparent")};
   min-height: 10rem;
 `;
+
+
+const VerticalScroll = styled.div`
+  padding: 4px;
+  overflow: auto;
+  max-height: 50vh;
+`;
+
 
 function MockColumn(props) {
 
@@ -39,7 +46,7 @@ function MockColumn(props) {
   // This is the global state
   const {state, column, setState} = props;
 
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState(column.title || "");
   
   class InnerList extends Component {
     shouldComponentUpdate(nextProps) {
@@ -97,31 +104,37 @@ function MockColumn(props) {
 
   return (
     <Draggable draggableId={props.column.id} index={props.index}>
-      {(provided) => (
-        <Container {...provided.draggableProps} ref={provided.innerRef}>
-          <form action="" onSubmit={handleAddColumnTitle}>
-            <label htmlFor="title">
-              <Input type="text" value={title} name="title" placeholder={props.column.title} onChange={handleChangeColumnTitle} />
-              <AddDetailsButton />
-            </label>
-          </form>
-          <CloseButton click={() => handleDeleteColumn(column.id)} column={column} tickets={tickets} />
-          <AddButton click={props.handleAddTask} style={{margin: 0}}/>
-          <Droppable droppableId={props.column.id} type="task">
-            {(provided, snapshot) => (
-              <TaskList
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-                isDraggingOver={snapshot.isDraggingOver}
-              >
-                <InnerList tickets={props.tickets} handleDeleteTask={props.handleDeleteTask} columnId={props.column.id} />
-                {provided.placeholder}
-              </TaskList>
-            )}
-          </Droppable>
-        </Container>
-      )}
-    </Draggable>
+        {(provided) => (
+            <Container className="column" {...provided.draggableProps} ref={provided.innerRef}>
+              <form action="" style={{padding: "20px 0"}} onSubmit={handleAddColumnTitle} {...provided.dragHandleProps}>
+                <label className="column-header" htmlFor="title">
+                  <div className="column-title">
+                    <Input autoComplete="off" type="text" value={title} name="title" placeholder="Enter column name" onChange={handleChangeColumnTitle}  />
+                  </div>
+                  <div className="column-action">
+                    <AddDetailsButton />
+                    <CloseButton click={() => handleDeleteColumn(column.id)} column={column} tickets={tickets} />
+                  </div>
+                </label>
+              </form>
+              <AddButton click={props.handleAddTask} style={{margin: 0}}/>
+              <Droppable droppableId={props.column.id} type="task">
+                {(provided, snapshot) => (
+                  <VerticalScroll>
+                    <TaskList
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                      isDraggingOver={snapshot.isDraggingOver}
+                    >
+                      <InnerList tickets={props.tickets} handleDeleteTask={props.handleDeleteTask} columnId={props.column.id} />
+                      {provided.placeholder}
+                    </TaskList>
+                  </VerticalScroll>
+                )}
+              </Droppable>
+            </Container>
+        )}
+      </Draggable>
   );
 }
 

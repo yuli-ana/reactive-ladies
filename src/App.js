@@ -19,12 +19,12 @@ function App() {
     <Router basename={process.env.PUBLIC_URL}>
       <div id="App">
         <Header colorTheme={colorTheme} toggleColorTheme={toggleColorTheme}/>
-        <main className={colorTheme}>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/board" component={Board} />
-          <Route path="/about" component={About} />
-        </Switch>
+        <main className={`main-container ${colorTheme}`}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/board" component={Board} />
+            <Route path="/about" component={About} />
+          </Switch>
         </main>
         <Footer />   
       </div>
