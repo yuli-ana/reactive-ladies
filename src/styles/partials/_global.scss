@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 // #ADD9E5;
 
@@ -9,19 +9,23 @@
 }
 
 body {
-    font-family: $primaryFont;
-    font-weight: 400;
-    margin: 0px;
-    color: $textColor;
-  }
-  
-  .pink {
-    background: #F9E5E6;
-  }
-  
-  .blue {
-    background: #E6FBF6;
-  }
+  font-family: $primaryFont;
+  font-weight: 400;
+  margin: 0px;
+  color: $textColor;
+}
+
+.pink {
+  background: #f9e5e6;
+}
+
+.blue {
+  background: #e6fbf6;
+}
+
+.main-container {
+  min-height: calc(100vh - 190px);
+}
 
 //   main {
 //     height: 80vh;

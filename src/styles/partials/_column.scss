@@ -1,3 +1,50 @@
+.column {
+  flex: 0 0 300px;
+
+  &-header {
+    display: flex;
+    align-items: center;
+  }
+
+  &-title {
+    flex: 1 0 auto;
+
+    input {
+      padding: 5px;
+      width: 100%;
+      border-radius: 0;
+      transition: all 0.3s ease-in;
+      font-size: 18px;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      &:focus {
+        border: 0;
+        border-bottom: 1px solid black;
+        outline: 0;
+        background: transparent;
+        color: #000;
+      }
+    }
+  }
+
+  &-action {
+    flex: 0 0 auto;
+
+    button {
+      background: transparent;
+      border: 0;
+      color: $textColor;
+
+      &.danger {
+        color: #ff6584;
+      }
+    }
+  }
+}
+
 .ticketDetailsStyles {
   max-height: 0;
   overflow: hidden;
