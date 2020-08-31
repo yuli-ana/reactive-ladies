@@ -71,6 +71,8 @@ function MockTask(props) {
     };
   }, []);
 
+
+  // TO DO //
   const openTicketDetails = () => {
     !isOpen
     ? setIsOpen(true)
