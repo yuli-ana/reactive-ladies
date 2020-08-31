@@ -1,6 +1,4 @@
 footer {
-    height: 17vh;
-    min-height: fit-content;
     font: 400 1rem $primaryFont;
     letter-spacing: 1.3px;
     padding: 0.5rem 35px;
@@ -14,7 +12,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    @media screen and (max-width: 900px) {
+    @media(max-width: 900px) {
         flex-direction: column;
     }
 }

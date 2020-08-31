@@ -8,10 +8,11 @@ const Header = (props) => {
   const colorTheme = props.colorTheme;
 
   return (
-    <nav>
+    <nav className='navigation'>
+      <div className='navWrapper'> 
       <div className='brand'>
         <BsClipboardData />
-        KanReact
+        <p>KanReact</p>
       </div>
       {/* <button className="toggle" onClick={props.toggleColorTheme}>Toggle</button> */}
       <button
@@ -34,6 +35,7 @@ const Header = (props) => {
             </li>
            
           </ul>
+    </div>
     </nav>
   );
 };
