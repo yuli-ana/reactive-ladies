@@ -43,7 +43,7 @@ function Home() {
         </section>
         
         <section className='founders'>
-          <h2>Meet Our Founders:</h2>
+          <h3>Meet Our Founders:</h3>
           <h2>Eyel, Yuliana and Oksana</h2>
           <p>From a startup to a market leader! Together, they translated their vision into an innovative app that helps managing your workflow efficiently and do more what matters the most.</p>
           <ul className='foundersContainer'>

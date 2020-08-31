@@ -1,9 +1,10 @@
-import React, { PureComponent, useState } from "react";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import { v4 as uuid } from "uuid";
-import "@atlaskit/css-reset";
-import MockColumn from "./MockColumn";
-import styled from "styled-components";
+import React, { PureComponent, useState, useEffect } from 'react';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { v4 as uuid } from 'uuid';
+import '@atlaskit/css-reset';
+import MockColumn from './MockColumn';
+import styled from 'styled-components';
+import AddButton from './buttons/AddButton';
 import ContextMenu from './ContextMenu';
 
 const StyledAddCol = styled.button`
@@ -54,7 +55,6 @@ const defaultState = {
         ticketIds: []
     },
   },
-  // Facilitate reordering of the columns
   columnOrder: [...ids],
   };
 
@@ -71,7 +71,19 @@ function RealDragDrop() {
   const [showMenu, setShowMenu] = useState(false);
   const [clickedTicketData, setClickedTicketData] = useState({});
 
-  const [state, setState] = useState(defaultState);
+  // GLOBAL STATE
+  const [state, setState] = useState(JSON.parse(localStorage.getItem('globalState')) || defaultState);
+
+
+  // Saving global state aka state (defaultState) to our localStorage, each time the state is being updated call useEffect to save the updated state to the local storage
+  useEffect(()=> {
+
+    localStorage.setItem('globalState', JSON.stringify(state));
+
+  }, [state]);
+
+
+
   class InnerList extends PureComponent {
     render() {
       const { column, ticketMap, index } = this.props;
