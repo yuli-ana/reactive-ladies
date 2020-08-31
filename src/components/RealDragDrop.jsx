@@ -1,10 +1,9 @@
-import React, { PureComponent, useState, useReducer } from "react";
+import React, { PureComponent, useState } from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { v4 as uuid } from "uuid";
 import "@atlaskit/css-reset";
 import MockColumn from "./MockColumn";
 import styled from "styled-components";
-import dataReducer from './dataReducer';
 import ContextMenu from './ContextMenu';
 
 const StyledAddCol = styled.button`

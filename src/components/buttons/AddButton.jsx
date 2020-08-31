@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    FaPlus
+    FaPlusCircle
   } from 'react-icons/fa';
 import styled from 'styled-components';
   import ReactTooltip from 'react-tooltip';

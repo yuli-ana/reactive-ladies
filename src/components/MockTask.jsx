@@ -182,35 +182,31 @@ function MockTask(props) {
         onClick={openTicketDetails}
         >
            <form onSubmit={handleAddTaskDescription} data-tip data-for='drag'>
-            <div className="task-header">
-              <div className="task-title">
-              <label htmlFor="task">
-                <Input autoFocus={title.length === 0 ? true : false} type="text" autoComplete="off" value={title} name="task" placeholder="Enter title" onChange={handleTaskTitle} />
-              </label>
+              <div className="task-header">
+                <div className="task-title">
+                <label htmlFor="task">
+                  <Input autoFocus={title.length === 0 ? true : false} type="text" autoComplete="off" value={title} name="task" placeholder="Enter title" onChange={handleTaskTitle} />
+                </label>
+                </div>
+                <div className="task-action">
+                  <AddDetailsButton />
+                  <CloseButton click={() => handleDeleteTask(ticket.id, columnId.id)}/>
+                </div>
               </div>
-              <div className="task-action">
-                <AddDetailsButton />
-                <CloseButton click={() => handleDeleteTask(ticket.id, columnId.id)}/>
-              </div>
-            </div>
-             {!isOpen ?
-               <Accordion>
-                  <label>
-                    <Textarea placeholder="Enter description" value={details} onChange={handleTaskDetails} />
-                  </label>
-               <Accordion />
-               :
-               <AccordionTwo>
-                   <label>
-                    <Textarea placeholder="Enter description" value={details} onChange={handleTaskDetails} />
-                  </label>
-                <AccordionTwo />
-             }
-<!--              <div className={!isOpen ? "ticketDetailsStyles" : "openTicketDetailsStyles"}> -->
-<!--             <label>
-                <Textarea placeholder="Enter description" value={details} onChange={handleTaskDetails} />
-             </label>
-            </div> -->
+              {!isOpen 
+              ?
+                <Accordion>
+                    <label>
+                      <Textarea placeholder="Enter description" value={details} onChange={handleTaskDetails} />
+                    </label>
+                </Accordion>
+                :
+                <AccordionTwo>
+                    <label>
+                      <Textarea placeholder="Enter description" value={details} onChange={handleTaskDetails} />
+                    </label>
+                </AccordionTwo>  
+              }      
           </form>
           <ReactTooltip id='drag'>
             <span>Right-click or drag</span>
