@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import { FaBars } from "react-icons/fa";
+import { FaBars } from 'react-icons/fa';
+import { BsClipboardData } from 'react-icons/bs';
 
 const Header = (props) => {
   const [isClosed, setisClosed] = useState(true);
@@ -8,26 +9,30 @@ const Header = (props) => {
 
   return (
     <nav>
-      <div className="brand">Logo</div>
-      <button className="toggle" onClick={props.toggleColorTheme}>Toggle</button>
+      <div className='brand'>
+        <BsClipboardData />
+        KanReact
+      </div>
+      {/* <button className="toggle" onClick={props.toggleColorTheme}>Toggle</button> */}
       <button
-        className="hamburger"
+        className='hamburger'
         tabIndex="0"
         onClick={() => setisClosed(!isClosed)}
       >
         <FaBars />
       </button>
-      <ul className={`menu ${isClosed ? null : "open"}`}>
+      <ul className={`menu ${isClosed ? null : 'open'}`}>
   
             <li>
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/board">About</Link>
             </li>
             <li>
-              <Link to="/board">Board</Link>
+              <Link to="/about">Try It for Free</Link>
             </li>
+           
           </ul>
     </nav>
   );
