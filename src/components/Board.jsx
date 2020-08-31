@@ -11,6 +11,8 @@ import { BiSupport } from 'react-icons/bi';
 import { FiPhoneCall } from 'react-icons/fi';
 
 
+
+
 function Info() {
   return (
       <div className='wrapper'>

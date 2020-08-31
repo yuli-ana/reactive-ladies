@@ -4,7 +4,8 @@ import {
   } from "react-icons/fa";
 
 
-const CloseButton = ({click}) => {
+const CloseButton = ({click, column, tickets }) => {
+
     return (
         <button onClick={click} style={{margin: "10px"}}><FaTimes/></button>
     );
