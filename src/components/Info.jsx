@@ -1,5 +1,7 @@
 import React from 'react';
 import headerImg from '../assets/undraw_online_organizer_ofxm.svg';
+import video from '../assets/kanReactTutorial.mp4';
+
 import {
   FaTrashAlt,
   FaPlusCircle,
@@ -10,6 +12,8 @@ import { FiPhoneCall } from 'react-icons/fi';
 
 
 function Info() {
+
+
   return (
       <div className='wrapper'>
         <section className='infopage'>
@@ -32,7 +36,13 @@ function Info() {
            
           </div>
           <div className='introImg'>
-            <img src={headerImg}/>
+            <video controls>
+                <source
+                  src={video}
+                  type="video/mp4"
+                />
+              </video>
+            {/* <img src={headerImg}/> */}
           </div>
         </section>
       </div>
