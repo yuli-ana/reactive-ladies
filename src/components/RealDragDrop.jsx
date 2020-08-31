@@ -54,6 +54,7 @@ function RealDragDrop() {
   const [showMenu, setShowMenu] = useState(false);
   const [clickedTicketData, setClickedTicketData] = useState({});
 
+  const [state, setState] = useState(defaultState);
   class InnerList extends PureComponent {
     render() {
       const { column, ticketMap, index } = this.props;
@@ -71,19 +72,15 @@ function RealDragDrop() {
         showMenu={showMenu}
         setClickedTicketData={setClickedTicketData}
         handleDeleteTask={handleDeleteTask}
+        state={state}
+        setState={setState}
         />;
     }
   }
 
-  const [state, setState] = useState(defaultState);
-
-  // const [data, dispatch] = useReducer(dataReducer, state);
-  // console.log(data);
-
   function handleDeleteColumn(idArgument){
-    console.log(idArgument);
-
     const { [idArgument]: value, ...rest } = state.columns;
+
     const columnsAfterDelete = {
         ...state,
         columnOrder: state.columnOrder.filter(item => item !== idArgument),
@@ -91,7 +88,6 @@ function RealDragDrop() {
     }
   
     setState(columnsAfterDelete)
-    // dispatch({type: "DELETE_COLUMN", payload: id });
   }
 
 
@@ -118,11 +114,9 @@ function RealDragDrop() {
     }
 
     setState(addedTasks)
-  // dispatch({type: "ADD_TASK", payload:{ taskId: uuid(), columnId: id} });
   }
 
   function handleDeleteTask(ticketId, columnId) {
-
     const deletedTasks = {
       ...state,
 
@@ -138,7 +132,6 @@ function RealDragDrop() {
     } 
 
     setState(deletedTasks);
-   
   }
 
   // a function called on onDragEnd event (react-beautiful-dnd library)
@@ -170,12 +163,9 @@ function RealDragDrop() {
         ...state,
         columnOrder: newColumnOrder
       };
+
       setState(newState);
-      
-     
-      // dispatch({type: "UPDATE_COLUMN_ORDER", payload: newColumnOrder})
-      // console.log('column order', newColumnOrder)
-      
+
       return;
     }
 
@@ -242,6 +232,7 @@ function RealDragDrop() {
         [newForeign.id]: newForeign
       }
     };
+
     setState(newState);
   };
 
@@ -255,7 +246,6 @@ function RealDragDrop() {
   }
   
     setState(addedColumns)
-    // dispatch({type: "ADD_COLUMN", payload: uuid()});
   }
 
   return (

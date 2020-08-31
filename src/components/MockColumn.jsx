@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import styled from "styled-components";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import MockTask from "./MockTask";
+import AddDetailsButton from './buttons/AddDetailsButton';
 import CloseButton from './buttons/CloseButton';
 import AddButton from './buttons/AddButton';
 
@@ -14,8 +15,10 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const Title = styled.h3`
-  padding: 0.8rem;
+const Input = styled.input `
+border: none;
+padding: 0.8rem;
+background: transparent;
 `;
 
 // Change color when dragging here
@@ -28,6 +31,14 @@ const TaskList = styled.div`
 `;
 
 function MockColumn(props) {
+
+  const { tickets, handleDeleteColumn } = props; // added
+
+
+  // This is the global state
+  const {state, column, setState} = props;
+
+  const [title, setTitle] = useState('');
   
   class InnerList extends Component {
     shouldComponentUpdate(nextProps) {
@@ -36,9 +47,10 @@ function MockColumn(props) {
       }
       return true;
     }
+
     render() {
-      const { handleDeleteTask, tickets, column } = props;
-      
+      const { handleDeleteTask, column } = props;
+
       return tickets.map((ticket, index) => (
           <MockTask 
             key={ticket.id} 
@@ -51,17 +63,48 @@ function MockColumn(props) {
             setClickedTicketData={props.setClickedTicketData}
             handleDeleteTask={handleDeleteTask} 
             columnId={column} 
+            state={state}
+            setState={setState}
           />
       ));
     }
+  }
+
+
+  function handleChangeColumnTitle(e){
+    setTitle(e.target.value);  
+  }
+
+  function handleAddColumnTitle(e){
+    e.preventDefault();
+
+    const dataWithUpdatedTitles = {
+      ...state,
+
+      columns: {
+        ...state.columns,
+      
+      [column.id]: {
+        ...state.columns[column.id],
+        title: title,
+        }
+      }
+    }
+
+    setState(dataWithUpdatedTitles);
   }
 
   return (
     <Draggable draggableId={props.column.id} index={props.index}>
       {(provided) => (
         <Container {...provided.draggableProps} ref={provided.innerRef}>
-          <Title {...provided.dragHandleProps}>{props.column.title}</Title>
-          <CloseButton click={props.handleDeleteColumn}/>
+          <form action="" onSubmit={handleAddColumnTitle}>
+            <label htmlFor="title">
+              <Input type="text" value={title} name="title" placeholder={props.column.title} onChange={handleChangeColumnTitle} />
+              <AddDetailsButton />
+            </label>
+          </form>
+          <CloseButton click={() => handleDeleteColumn(column.id)} column={column} tickets={tickets} />
           <AddButton click={props.handleAddTask} style={{margin: 0}}/>
           <Droppable droppableId={props.column.id} type="task">
             {(provided, snapshot) => (
