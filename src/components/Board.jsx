@@ -44,7 +44,7 @@ export const DataContext = React.createContext();
 // let columnId = 3;
 
 
-function Board() {
+function Info() {
     // Initial state
     // Runs when components is mounted 
     // const [initialData, setInitialState] = useState(JSON.parse(localStorage.getItem("board")) || defaultState);
@@ -86,4 +86,4 @@ function Board() {
   )
 }
 
-export default Board;
+export default Info;
