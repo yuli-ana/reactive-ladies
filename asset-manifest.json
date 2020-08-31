@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "./static/css/main.2eb7d76e.chunk.css",
+    "main.js": "./static/js/main.520eb1b6.chunk.js",
+    "main.js.map": "./static/js/main.520eb1b6.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.893301b1.js",
+    "runtime-main.js.map": "./static/js/runtime-main.893301b1.js.map",
+    "static/css/2.3107b260.chunk.css": "./static/css/2.3107b260.chunk.css",
+    "static/js/2.294070a8.chunk.js": "./static/js/2.294070a8.chunk.js",
+    "static/js/2.294070a8.chunk.js.map": "./static/js/2.294070a8.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.0ba28a0655341231ef64938f4c4cfcf2.js": "./precache-manifest.0ba28a0655341231ef64938f4c4cfcf2.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.3107b260.chunk.css.map": "./static/css/2.3107b260.chunk.css.map",
+    "static/css/main.2eb7d76e.chunk.css.map": "./static/css/main.2eb7d76e.chunk.css.map",
+    "static/js/2.294070a8.chunk.js.LICENSE.txt": "./static/js/2.294070a8.chunk.js.LICENSE.txt",
+    "static/media/juno-logo.png": "./static/media/juno-logo.c6ef4e9e.png",
+    "static/media/mintbean.png": "./static/media/mintbean.cf18b629.png",
+    "static/media/reactIcon.png": "./static/media/reactIcon.8f65a033.png",
+    "static/media/undraw_Eiffel_tower_3gw8.png": "./static/media/undraw_Eiffel_tower_3gw8.e846e8b4.png",
+    "static/media/undraw_dev_productivity_umsq.svg": "./static/media/undraw_dev_productivity_umsq.5570c207.svg",
+    "static/media/undraw_online_organizer_ofxm.svg": "./static/media/undraw_online_organizer_ofxm.d7c62bef.svg",
+    "static/media/undraw_subscriber_vabu.svg": "./static/media/undraw_subscriber_vabu.ff5566a0.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.893301b1.js",
+    "static/css/2.3107b260.chunk.css",
+    "static/js/2.294070a8.chunk.js",
+    "static/css/main.2eb7d76e.chunk.css",
+    "static/js/main.520eb1b6.chunk.js"
+  ]
+}
