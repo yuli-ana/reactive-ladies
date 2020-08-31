@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
 import CloseButton from './buttons/CloseButton';
@@ -15,8 +15,9 @@ const Container = styled.div`
 `;
   
 function MockTask(props) {
-    
-    const {handleDeleteTask, ticket, columnId} = props;
+
+  const [isOpen, setIsOpen] = useState(false)  
+  const {handleDeleteTask, ticket, columnId} = props;
 
   // function to close ContextMenu
   const handleClick = () => {
@@ -53,13 +54,23 @@ function MockTask(props) {
     };
   }, []);
 
-  
-  const detailsStyles = {
-    display: 'none'
+  const openTicketDetails = () => {
+    !isOpen
+    ? setIsOpen(true)
+    : setIsOpen(false);
   }
 
-  const openTicketDetails = () => {
-    console.log('clicked');
+  const openTicketDetailsStyles = {
+    display: 'block',
+    maxHeight: 'auto',
+    overflow: 'initial',
+  }
+
+  const ticketDetailsStyles = {
+    display: 'none',
+    maxHeight: 0,
+    overflow: 'hidden',
+    transition: 'maxHeight 0.4s'
   }
   
   return (
@@ -75,7 +86,7 @@ function MockTask(props) {
         >
           <CloseButton click={() => handleDeleteTask(ticket.id, columnId.id)}/>
           <h4>{props.ticket.title}</h4>
-          <div className='ticketDetails' style={detailsStyles}>
+          <div className='ticketDetails' style={!isOpen ? {display: 'none'} : {display: 'block'}}>
             <p>{props.ticket.details}</p>
           </div>
         </Container>
