@@ -3,7 +3,7 @@ import googlePlay from '../assets/128x128.jpg'
 import appleStore from '../assets/128x128copy.jpg' 
 import {
   FaLinkedinIn,
-  FaExternalLinkAlt,
+  FaInstagram,
   FaTwitter,
   FaRegEnvelope,
 } from 'react-icons/fa';
@@ -34,14 +34,14 @@ const Footer = (props) => {
           <a href='#'><FaLinkedinIn /></a>
           </li>
           <li>
-            <a href='#'><FaExternalLinkAlt /></a>
+            <a href='#'><FaInstagram /></a>
           </li>
           <li>
             <a href='#'><FaTwitter /></a>
           </li>
-          <li>
+          {/* <li>
             <a href='#'><FaRegEnvelope /></a>
-          </li>
+          </li> */}
         </ul>
         <div className='languageSelect'>
           <label htmlFor='language' className='visuallyHidden'>Select language</label>

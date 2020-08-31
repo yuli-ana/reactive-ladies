@@ -1,3 +1,11 @@
 $primaryFont: 'Roboto', sans-serif;
 $textColor: #172B4D;
 $headerTextColor: rgb(168, 168, 168);
+
+
+@mixin flex ($flexFlow, $justifyContent, $alignItems) {
+    display: flex;
+    flex-flow: $flexFlow;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+}
