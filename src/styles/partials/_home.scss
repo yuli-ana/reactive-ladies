@@ -143,12 +143,15 @@
 }
 
 
-////////////////// .tools section styles //////////////////
+////////////////// .subscribe section styles //////////////////
 
 .subscribe {
   display: flex;
   align-items: center;
   padding: 50px 0 110px 0;
+  img {
+    max-width: 33.3%;
+  }
 }
 
 .subscribeText {
