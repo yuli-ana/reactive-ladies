@@ -12,9 +12,24 @@ import {
   FaTwitter,
   FaReact
 } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 
 function Home() {
+
+
+
+  const handleSubscribe = () => {
+    Swal.fire({
+      title: 'Hang on for updates!',
+      imageWidth: 400,
+      imageHeight: 400,
+      confirmButtonColor: '#192B4D',
+      text: 'You will be added to our subscription list once the app is released.',
+      confirmButtonText: 'OK'
+    })
+  }
+  
     return (
       <div className='wrapper'>
         <section className='intro'>
@@ -80,7 +95,7 @@ function Home() {
           <img src={imgTwo} />
           <div className='subscribeText'>
             <p>Awesome teams around the world choose KanReact. Sign up for free and become one of them!</p>
-            <button type='button'><a href='https://www.oksanadev.com/' target='_blank' rel='noopener noreferrer'>Subscribe</a></button>
+            <button type='button' onClick={handleSubscribe}>Subscribe</button>
           </div>
           <img src={imgThree} />
         </section>

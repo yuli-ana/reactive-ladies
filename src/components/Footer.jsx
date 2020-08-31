@@ -20,6 +20,7 @@ const Footer = (props) => {
       title: 'Hang on for updates!',
       imageWidth: 400,
       imageHeight: 400,
+      confirmButtonColor: '#192B4D',
       text: `The app will be soon available in ${store}!`,
       confirmButtonText: 'Cool'
     })

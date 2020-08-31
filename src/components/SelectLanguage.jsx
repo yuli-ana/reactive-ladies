@@ -20,6 +20,7 @@ function SelectLanguage() {
             imageUrl: parisImage,
             imageWidth: 200,
             imageHeight: 200,
+            confirmButtonColor: '#192B4D',
             text: `Restez à l'écoute pour les mises à jour! La version française sera bientôt disponible.`,
             confirmButtonText: `D'accord!`
           })
