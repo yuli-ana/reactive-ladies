@@ -22,3 +22,8 @@
 .contextMenu li button:hover {
   opacity: 0.7;
 }
+.board-horizontal-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+  margin: 0 50px;
+}

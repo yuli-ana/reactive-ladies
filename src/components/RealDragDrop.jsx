@@ -1,12 +1,29 @@
-import React, { PureComponent, useState, useReducer } from "react";
+import React, { PureComponent, useState } from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { v4 as uuid } from "uuid";
 import "@atlaskit/css-reset";
 import MockColumn from "./MockColumn";
 import styled from "styled-components";
-import dataReducer from './dataReducer';
-import AddButton from './buttons/AddButton';
 import ContextMenu from './ContextMenu';
+
+const StyledAddCol = styled.button`
+  flex: 0 0 240px;
+  background: #fff;
+  margin-top: 133px;
+  margin-bottom: 10px;
+  display: block;
+  border: none;
+  border-radius: 0.2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 1px 1px 0 rgba(66, 66, 66, 0.08), 0 1px 3px 1px rgba(66, 66, 66, 0.16);
+  span {
+    display: block;
+  }
+`;
 
 
 const ids = [uuid(), uuid(), uuid()];
@@ -250,25 +267,27 @@ function RealDragDrop() {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <AddButton click={handleAddColumn}/>
-      <Droppable droppableId="all-columns" direction="horizontal" type="column">
-        {(provided) => (
-          <Container {...provided.droppableProps} ref={provided.innerRef}>
-            {state.columnOrder.map((columnId, index) => {
-              const column = state.columns[columnId];
-              return (
-                <InnerList
-                  key={column.id}
-                  column={column}
-                  ticketMap={state.tickets}
-                  index={index}
-                />
-              );
-            })}
-            {provided.placeholder}
-          </Container>
-        )}
-      </Droppable>
+      <div className="board-horizontal-scroll">
+        <Droppable droppableId="all-columns" direction="horizontal" type="column">
+          {(provided) => (
+            <Container {...provided.droppableProps} ref={provided.innerRef}>
+              {state.columnOrder.map((columnId, index) => {
+                const column = state.columns[columnId];
+                return (
+                  <InnerList
+                    key={column.id}
+                    column={column}
+                    ticketMap={state.tickets}
+                    index={index}
+                  />
+                );
+              })}
+              {provided.placeholder}
+              <StyledAddCol onClick={handleAddColumn}><span>Add Column</span></StyledAddCol>
+            </Container>
+          )}
+        </Droppable>
+      </div>
       { 
         showMenu 
         ? <ContextMenu 
@@ -282,5 +301,6 @@ function RealDragDrop() {
     </DragDropContext>
   );
 }
+
 
 export default RealDragDrop;

@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import {
-    FaTimes
-  } from "react-icons/fa";
+    FaTrashAlt
+  } from 'react-icons/fa';
   import ReactTooltip from 'react-tooltip';
 
 
@@ -9,7 +9,7 @@ const CloseButton = ({click, column, tickets }) => {
 
     return (
         <>
-        <button onClick={click} style={{margin: "10px"}} data-tip data-for='deleteItem'><FaTimes/></button>
+        <button onClick={click} className="danger" data-tip data-for='deleteItem'><FaTrashAlt /></button>
         <ReactTooltip id='deleteItem'>
             <span>Click here to delete</span>
         </ReactTooltip>
