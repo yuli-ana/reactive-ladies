@@ -50,7 +50,6 @@ function SelectLanguage() {
           defaultValue={{ value: 'English', label: 'English' }}
           onChange={handleChange}
           options={options}
-          autoFocus={true}
         />
       </>
     );

@@ -1,12 +1,11 @@
 import React from "react";
 import {
-    FaCheckCircle
+    FaSave
   } from "react-icons/fa";
-
 
 const AddDetailsButton = ({submit}) => {
     return (
-        <button type="submit" style={{margin: 5}}><FaCheckCircle/></button>
+        <button type="submit"><FaSave /></button>
     );
 }
 

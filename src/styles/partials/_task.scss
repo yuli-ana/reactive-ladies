@@ -1,0 +1,29 @@
+.task {
+  &-header {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+
+  &-title {
+    flex: 1 0 auto;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  &-action {
+    flex: 0 0 auto;
+
+    button {
+      background: transparent;
+      border: 0;
+      color: $textColor;
+
+      &.danger {
+        color: #ff6584;
+      }
+    }
+  }
+}
