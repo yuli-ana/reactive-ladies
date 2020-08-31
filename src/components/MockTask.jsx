@@ -110,7 +110,7 @@ function MockTask(props) {
   
   useEffect(() => {
     // grab all the ticket elements
-    const tickets = document.getElementsByClassName('ticket');
+    const tickets = document.getElementsByClassName('task');
     
     document.addEventListener("click", handleClick);
     // turn HTMLCollection into an array

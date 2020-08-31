@@ -5,6 +5,7 @@
   padding: 15px;
   li {
     background-color: #fff;
+    transition: box-shadow 0.4s;   
     button {
       display: block;
       background: none;
@@ -12,16 +13,16 @@
       font: 400 0.85rem $primaryFont;
       cursor: pointer;
       padding: 5px 10px; 
-      transition: opacity 0.4s;   
       color: $textColor;
       border-radius: 3px;
     }
   }
 }
 
-.contextMenu li button:hover {
-  opacity: 0.7;
+.contextMenu li:hover {
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
 }
+
 .board-horizontal-scroll {
   overflow-y: hidden;
   overflow-x: auto;
