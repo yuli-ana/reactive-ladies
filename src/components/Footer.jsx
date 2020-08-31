@@ -8,7 +8,7 @@ import {
   FaRegEnvelope,
 } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-import SelectLanguage from './SelectLanguage'
+import SelectLanguage from './SelectLanguage';
 
 
 const Footer = (props) => {
@@ -48,7 +48,7 @@ const Footer = (props) => {
           <SelectLanguage/>
         </div>
         <ul className='appDl'>
-          <li>
+          <li data-tip data-for="happyFace">
             <a onClick={()=> showAlert('Google Play')}><img src={googlePlay}/></a>
           </li>
           <li>
@@ -60,5 +60,6 @@ const Footer = (props) => {
     </footer>
   );
 };
+
 
 export default Footer;
