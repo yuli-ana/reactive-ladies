@@ -5,6 +5,7 @@ import CloseButton from './buttons/CloseButton';
 import AddDetailsButton from './buttons/AddDetailsButton';
 import { v4 as uuid } from "uuid";
 import ReactTooltip from 'react-tooltip';
+import Swal from 'sweetalert2';
 
 const Container = styled.div`
 padding: 0.8rem;
@@ -139,6 +140,16 @@ function MockTask(props) {
 
   function handleAddTaskDescription(e){
     e.preventDefault();
+
+    // Added sweet alert to check if input is empty
+    if (!details) {
+      Swal.fire({
+          title: 'Oops',
+          confirmButtonColor: '#192B4D',
+          text: 'Please enter your text',
+          confirmButtonText: `Sure!`
+        })
+    };
 
     const dataWithUpdatedTasks = {
       ...state,

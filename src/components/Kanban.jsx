@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import RealDragDrop from './RealDragDrop'
 
-function About() {
+function Kanban() {
     return (
         <>
             <RealDragDrop />
@@ -9,4 +9,4 @@ function About() {
     )
 }
 
-export default About;
+export default Kanban;

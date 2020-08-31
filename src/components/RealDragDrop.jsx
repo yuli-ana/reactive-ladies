@@ -6,6 +6,7 @@ import MockColumn from './MockColumn';
 import styled from 'styled-components';
 import AddButton from './buttons/AddButton';
 import ContextMenu from './ContextMenu';
+import ReactTooltip from 'react-tooltip';
 
 const StyledAddCol = styled.button`
   flex: 0 0 240px;
@@ -294,7 +295,10 @@ function RealDragDrop() {
                 );
               })}
               {provided.placeholder}
-              <StyledAddCol onClick={handleAddColumn}><span>Add Column</span></StyledAddCol>
+              <StyledAddCol onClick={handleAddColumn} data-tip data-for='addColumn'><span>Add Column</span></StyledAddCol>
+              <ReactTooltip id='addColumn'>
+                <span>Add a column by clicking here</span>
+              </ReactTooltip>
             </Container>
           )}
         </Droppable>

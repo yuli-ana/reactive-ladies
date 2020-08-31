@@ -45,7 +45,7 @@ function Home() {
         <section className='founders'>
           <h3>Meet Our Founders:</h3>
           <h2>Eyel, Yuliana and Oksana</h2>
-          <p>From a startup to a market leader! Together, they translated their vision into an innovative app that helps managing your workflow efficiently and do more what matters the most.</p>
+          <p>From a startup to a market leader! Together, they translated their vision into an innovative app that helps you manage your workflow efficiently and do more what matters the most.</p>
           <ul className='foundersContainer'>
             <li className='foundersCard'>
               <img src={eyel} />
@@ -94,7 +94,7 @@ function Home() {
         <section className='subscribe'>
           <img src={imgTwo} />
           <div className='subscribeText'>
-            <p>Awesome teams around the world choose KanReact. Sign up for free and become one of them!</p>
+            <p>Awesome teams around the world choose KanReact. Sign up for free to be among them!</p>
             <button type='button' onClick={handleSubscribe}>Subscribe</button>
           </div>
           <img src={imgThree} />

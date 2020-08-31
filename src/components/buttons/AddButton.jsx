@@ -3,7 +3,7 @@ import {
     FaPlusCircle
     } from 'react-icons/fa';
 import styled from 'styled-components';
-  import ReactTooltip from 'react-tooltip';
+import ReactTooltip from 'react-tooltip';
 
 
   const StyledButton = styled.button`
@@ -19,9 +19,9 @@ import styled from 'styled-components';
 const AddButton = ({click}) => {
     return (
         <>
-        <StyledButton onClick={click} className="column-add-ticket" data-tip data-for='addColumn'><FaPlusCircle /></StyledButton>
-        <ReactTooltip id='addColumn'>
-            <span>Add a column</span>
+        <StyledButton onClick={click} className="column-add-ticket" data-tip data-for='addTask'><FaPlusCircle /></StyledButton>
+        <ReactTooltip id='addTask'>
+            <span>Add a task</span>
         </ReactTooltip>
         </>
     );
