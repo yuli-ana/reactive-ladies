@@ -1,0 +1,39 @@
+.infopage {
+  min-height: 73vh;
+  display: flex;
+  padding: 100px 0;
+  @media(max-width: 768px) {
+    @include flex(column nowrap, center, flex-start);
+  }
+  .infoText {
+    padding-right: 50px;
+    flex-basis: 50%;
+    h1 {
+      font: 700 3.5rem $primaryFont;
+      letter-spacing: 1.2px;
+      margin-bottom: 30px;
+    }
+    p {
+      font-size: 1.3rem;
+      line-height: 1.5;
+      letter-spacing: 1.2px;
+    }
+  }
+  .introImg {
+    flex-basis: 50%;
+    padding-left: 50px;;
+    @media(max-width: 768px) {
+      padding-left: 0;
+    }
+  }
+  }
+
+  .support {
+    padding: 0;
+    margin: 0;
+    font-size: 1.5rem;
+    @include flex(row nowrap, flex-start, center);
+      li {
+        padding: 1.5rem;
+      }
+  }

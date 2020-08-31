@@ -15,13 +15,6 @@ const Header = (props) => {
         <p>KanReact</p>
       </div>
       {/* <button className="toggle" onClick={props.toggleColorTheme}>Toggle</button> */}
-      <button
-        className='hamburger'
-        tabIndex="0"
-        onClick={() => setisClosed(!isClosed)}
-      >
-        <FaBars />
-      </button>
       <ul className={`menu ${isClosed ? null : 'open'}`}>
   
             <li>
@@ -33,8 +26,14 @@ const Header = (props) => {
             <li>
               <Link to="/about">Try It for Free</Link>
             </li>
-           
           </ul>
+          <button
+            className='hamburger'
+            tabIndex="0"
+            onClick={() => setisClosed(!isClosed)}
+          >
+            <FaBars />
+          </button>
     </div>
     </nav>
   );

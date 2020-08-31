@@ -31,13 +31,13 @@ const Footer = (props) => {
       <div className='upperFooter'>
         <ul className="socials">
           <li>
-          <a href='#'><FaLinkedinIn /></a>
+          <a href='#' target='_blank' rel='noopener noreferrer'><FaLinkedinIn /></a>
           </li>
           <li>
-            <a href='#'><FaInstagram /></a>
+            <a href='#' target='_blank' rel='noopener noreferrer'><FaInstagram /></a>
           </li>
           <li>
-            <a href='#'><FaTwitter /></a>
+            <a href='#' target='_blank' rel='noopener noreferrer'><FaTwitter /></a>
           </li>
           {/* <li>
             <a href='#'><FaRegEnvelope /></a>
