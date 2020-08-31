@@ -28,14 +28,13 @@ border: none;
 `;
   
 function MockTask(props) {
+
+  const [isOpen, setIsOpen] = useState(false)  
     
     const {handleDeleteTask, ticket, columnId, state, setState} = props;
 // After the state is updated component will re-render and ticket.title whatever it's set to
     const [title, setTitle] = useState(ticket.title || '');
-    const [details, setDetails] = useState(ticket.details || '');
-
-    console.log(ticket.id)
-    
+    const [details, setDetails] = useState(ticket.details || ''); 
 
   // function to close ContextMenu
   const handleClick = () => {
@@ -50,7 +49,7 @@ function MockTask(props) {
     props.setXPos(`${e.pageX}px`);
     props.setYPos(`${e.pageY}px`)
     props.setShowMenu(true);
-    props.setClickedTicketId(e.target.attributes[1].nodeValue);
+    props.setClickedTicketData({ticketId: e.currentTarget.attributes[1].nodeValue, colId: e.currentTarget.parentElement.attributes[0].nodeValue});
   }
   
   useEffect(() => {
@@ -73,10 +72,29 @@ function MockTask(props) {
   }, []);
 
 
+  // TO DO //
+  const openTicketDetails = () => {
+    !isOpen
+    ? setIsOpen(true)
+    : setIsOpen(false);
+  }
+
+  const openTicketDetailsStyles = {
+    display: 'block',
+    maxHeight: 'auto',
+    overflow: 'initial',
+  }
+
+  const ticketDetailsStyles = {
+    display: 'none',
+    maxHeight: 0,
+    overflow: 'hidden',
+    transition: 'maxHeight 0.4s'
+  }
+
   function handleTaskTitle(e){
     setTitle(e.target.value); 
   }
-console.log(title);
 
   function handleTaskDetails(e){
     setDetails(e.target.value);  
@@ -111,6 +129,7 @@ console.log(title);
         ref={provided.innerRef}
         isDragging={snapshot.isDragging}
         className='ticket'
+        onClick={openTicketDetails}
         >
           <CloseButton click={() => handleDeleteTask(ticket.id, columnId.id)}/>
           <form onSubmit={handleAddTaskDescription}>

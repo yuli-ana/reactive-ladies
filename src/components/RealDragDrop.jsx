@@ -52,7 +52,7 @@ function RealDragDrop() {
   const [xPos, setXPos] = useState('0px');
   const [yPos, setYPos] = useState('0px');
   const [showMenu, setShowMenu] = useState(false);
-  const [clickedTicketId, setClickedTicketId] = useState('');
+  const [clickedTicketData, setClickedTicketData] = useState({});
 
   const [state, setState] = useState(defaultState);
   class InnerList extends PureComponent {
@@ -70,7 +70,7 @@ function RealDragDrop() {
         setYPos={setYPos}
         setShowMenu={setShowMenu}
         showMenu={showMenu}
-        setClickedTicketId={setClickedTicketId}
+        setClickedTicketData={setClickedTicketData}
         handleDeleteTask={handleDeleteTask}
         state={state}
         setState={setState}
@@ -275,7 +275,7 @@ function RealDragDrop() {
             xPos={xPos} 
             yPos={yPos} 
             data={state} 
-            clickedTicketId={clickedTicketId}
+            clickedTicketData={clickedTicketData}
           /> 
         : null 
       }

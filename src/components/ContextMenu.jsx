@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-const ContextMenu = ({xPos, yPos, data, clickedTicketId}) => {
-
+const ContextMenu = ({xPos, yPos, data, clickedTicketData}) => {
+  
   const [columns, setColumns] = useState([]);
 
   useEffect(() => {
@@ -10,26 +10,29 @@ const ContextMenu = ({xPos, yPos, data, clickedTicketId}) => {
     for (let key in data.columns) {
       newColumns.push(data.columns[key]);
     };
-  
+    
     setColumns(newColumns);
 
-  }, [])
-
+  }, [clickedTicketData])
+  
+  // make copy of the data state object
   const dataCopy = {};
   Object.assign(dataCopy, data);
-
+  
   const getTicketData = () => {
-    let data = {};
-
+    let index = '';
+    
+    // loop through the state object
     for (let key in dataCopy.columns) {
-      const ticketToRemoveIdx = dataCopy.columns[key].ticketIds.findIndex(ticketIds => ticketIds === clickedTicketId);
+      // find the index of the clicked ticket using its ID
+      const ticketToRemoveIdx = dataCopy.columns[key].ticketIds.findIndex(ticketIds => ticketIds === clickedTicketData.ticketId);
+      // loop returns -1 if not found, need to return value only if found
       if (Math.sign(ticketToRemoveIdx) !== -1) {
-        data.colId =  dataCopy.columns[key].id;
-        data.ticketIdx =  ticketToRemoveIdx;
+        index =  ticketToRemoveIdx;
       }
     }
 
-    return data;
+    return index;
   }
 
   const retainTicket = (columnId, ticketIdx) => {
@@ -54,9 +57,9 @@ const ContextMenu = ({xPos, yPos, data, clickedTicketId}) => {
   }
 
   const handleClick = (columnId) => {
-    const data = getTicketData();
+    const ticketIdx = getTicketData();
 
-    const ticketArr = retainTicket(data.colId, data.ticketIdx);
+    const ticketArr = retainTicket(clickedTicketData.colId, ticketIdx);
 
     pushTicketToArr(columnId, ticketArr);
   }
@@ -69,10 +72,13 @@ const ContextMenu = ({xPos, yPos, data, clickedTicketId}) => {
     backgroundColor: '#F9E5E6',
   }
 
+  const columnsCopy = [...columns];
+  const filteredColumns = columnsCopy.filter(column => column.id !== clickedTicketData.colId)
+
   return (
     <ul style={ulStyles}>
       {
-        columns.map(column => {
+        filteredColumns.map(column => {
           return <li key={column.id}><button onClick={() => handleClick(column.id)}>Move Card to "{column.title}" Column</button></li>
         })
       }

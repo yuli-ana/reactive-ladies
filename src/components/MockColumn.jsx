@@ -2,7 +2,6 @@ import React, { Component, useState } from "react";
 import styled from "styled-components";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import MockTask from "./MockTask";
-import { Accordion, AccordionItem } from 'react-sanfona';
 import AddDetailsButton from './buttons/AddDetailsButton';
 import CloseButton from './buttons/CloseButton';
 import AddButton from './buttons/AddButton';
@@ -61,7 +60,7 @@ function MockColumn(props) {
             setYPos={props.setYPos}
             setShowMenu={props.setShowMenu}
             showMenu={props.showMenu}
-            setClickedTicketId={props.setClickedTicketId}
+            setClickedTicketData={props.setClickedTicketData}
             handleDeleteTask={handleDeleteTask} 
             columnId={column} 
             state={state}
