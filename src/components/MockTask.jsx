@@ -52,6 +52,15 @@ function MockTask(props) {
       });
     };
   }, []);
+
+  
+  const detailsStyles = {
+    display: 'none'
+  }
+
+  const openTicketDetails = () => {
+    console.log('clicked');
+  }
   
   return (
     <Draggable draggableId={props.ticket.id} index={props.index}>
@@ -62,10 +71,11 @@ function MockTask(props) {
         ref={provided.innerRef}
         isDragging={snapshot.isDragging}
         className='ticket'
+        onClick={openTicketDetails}
         >
           <CloseButton click={() => handleDeleteTask(ticket.id, columnId.id)}/>
           <h4>{props.ticket.title}</h4>
-          <div>
+          <div className='ticketDetails' style={detailsStyles}>
             <p>{props.ticket.details}</p>
           </div>
         </Container>
