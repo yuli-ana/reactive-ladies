@@ -1,0 +1,24 @@
+.contextMenu {
+  background-color: #E6FBF6;
+  border-radius: 5px;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  padding: 15px;
+  li {
+    background-color: #fff;
+    button {
+      display: block;
+      background: none;
+      border: none;
+      font: 400 0.85rem $primaryFont;
+      cursor: pointer;
+      padding: 5px 10px; 
+      transition: opacity 0.4s;   
+      color: $textColor;
+      border-radius: 3px;
+    }
+  }
+}
+
+.contextMenu li button:hover {
+  opacity: 0.7;
+}
