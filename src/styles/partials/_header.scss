@@ -1,23 +1,17 @@
-header {
-    height: 10vh;
-}
-
 nav {
     position: sticky;
+    height: 10vh;
     top: 0;
     background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex(row nowrap, center, center);
     padding: 8px;
     box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
 
     .brand {
       // height: 40px;
-      display: flex;
-      align-items: center;
+      @include flex(row nowrap, auto, center);
       flex-shrink: 0;
-      color: $primaryFont;
+      color: $textColor;
     }
 
     .toggle {
@@ -26,14 +20,14 @@ nav {
       font: 400 1rem $primaryFont;
       letter-spacing: 1.3px;
       cursor: pointer;
-      color: $headerTextColor;
+      color: $textColor;
     }
   
     .hamburger {
       display: none;
       border: none;
       padding-right: 1.2rem;
-      color: $headerTextColor;
+      color: $textColor;
       background-color: transparent;
       @media screen and (max-width: 768px) {
         display: block;
@@ -41,32 +35,25 @@ nav {
     }
   
     .menu {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      list-style-type: none;
-      padding: 0px;
-      margin: 0px;
+      @include flex(row nowrap, center, center);
       @media screen and (max-width: 768px) {
         display: none;
-        flex-direction: column;
-        align-items: flex-start;
       }
     }
   
     .menu.open {
       @media screen and (max-width: 768px) {
-        display: flex;
+        @include flex(column nowrap, center, flex-start);
         width: 100%;
       }
     }
   
     .menu li {
-      padding: 0 20px;
-      margin: 0px;
+      padding: 0 2rem;
+      margin: 0;
       @media screen and (max-width: 768px) {
-        padding: 0px;
-        margin-bottom: 8px;
+        padding: 0;
+        margin-bottom: 0.8rem;
       }
     }
   
@@ -74,7 +61,9 @@ nav {
       font: 400 1rem $primaryFont;
       letter-spacing: 1.3px;
       color: $textColor;
+      font-size: 1.1rem;
       text-decoration: none;
+      text-transform: uppercase;
     }
   
     .menu li a:hover {
@@ -83,3 +72,19 @@ nav {
     }
   }
   
+  .menu li:last-of-type {
+    padding: 0.5rem 1rem;
+    background-color: $textColor;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+      a {
+        color: #fff;
+        text-transform: uppercase;
+        &:hover,
+        &:focus {
+          box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+          color: #fff;
+        }
+     }
+  }
