@@ -4,6 +4,7 @@ import { Draggable } from "react-beautiful-dnd";
 import CloseButton from './buttons/CloseButton';
 import AddDetailsButton from './buttons/AddDetailsButton';
 import { v4 as uuid } from "uuid";
+import ReactTooltip from 'react-tooltip';
 
 const Container = styled.div`
   padding: 0.8rem;
@@ -117,6 +118,7 @@ function MockTask(props) {
     <Draggable draggableId={props.ticket.id} index={props.index}>
       {(provided, snapshot) => (
         <Container
+        data-tip data-for='drag'
         {...provided.draggableProps}
         {...provided.dragHandleProps}
         ref={provided.innerRef}
@@ -125,7 +127,7 @@ function MockTask(props) {
         onClick={(e) => openTicketDetails(e)}
         >
           <CloseButton click={() => handleDeleteTask(ticket.id, columnId.id)}/>
-          <form onSubmit={handleAddTaskDescription}>
+          <form onSubmit={handleAddTaskDescription} data-tip data-for='drag'>
             <label htmlFor="task">
               <Input type="text" value={title} name="task" placeholder="Title" onChange={handleTaskTitle} />
             </label>
@@ -136,6 +138,9 @@ function MockTask(props) {
               </label>
             </div>
           </form>
+          <ReactTooltip id='drag'>
+            <span>Right-click or drag</span>
+        </ReactTooltip>
         </Container>
       )}
     </Draggable>
