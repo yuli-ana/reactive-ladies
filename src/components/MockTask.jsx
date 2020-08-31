@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
 import CloseButton from './buttons/CloseButton';
+import AddDetailsButton from './buttons/AddDetailsButton';
+import { v4 as uuid } from "uuid";
 
 const Container = styled.div`
   padding: 0.8rem;
@@ -13,10 +15,27 @@ const Container = styled.div`
   border: "1px solid black";
   background-color: ${(props) => (props.isDragging ? "lightgrey" : "yellow")};
 `;
+
+const Input = styled.input `
+border: none;
+padding: 0.8rem;
+background: transparent;
+`;
+
+const Textarea = styled.textarea `
+background: transparent;
+border: none;
+`;
   
 function MockTask(props) {
     
-    const {handleDeleteTask, ticket, columnId} = props;
+    const {handleDeleteTask, ticket, columnId, state, setState} = props;
+// After the state is updated component will re-render and ticket.title whatever it's set to
+    const [title, setTitle] = useState(ticket.title || '');
+    const [details, setDetails] = useState(ticket.details || '');
+
+    console.log(ticket.id)
+    
 
   // function to close ContextMenu
   const handleClick = () => {
@@ -52,6 +71,36 @@ function MockTask(props) {
       });
     };
   }, []);
+
+
+  function handleTaskTitle(e){
+    setTitle(e.target.value); 
+  }
+console.log(title);
+
+  function handleTaskDetails(e){
+    setDetails(e.target.value);  
+  }
+
+  function handleAddTaskDescription(e){
+    e.preventDefault();
+
+    const dataWithUpdatedTasks = {
+      ...state,
+
+      tickets: {
+        ...state.tickets, 
+        [ticket.id]: {
+          ...state.tickets[ticket.id],
+
+          title: title, 
+          details: details, 
+        },
+      },
+    };
+
+    setState(dataWithUpdatedTasks);
+  }
   
   return (
     <Draggable draggableId={props.ticket.id} index={props.index}>
@@ -64,7 +113,15 @@ function MockTask(props) {
         className='ticket'
         >
           <CloseButton click={() => handleDeleteTask(ticket.id, columnId.id)}/>
-          {props.ticket.title}
+          <form onSubmit={handleAddTaskDescription}>
+            <label htmlFor="task">
+              <Input type="text" value={title} name="task" placeholder="Title" onChange={handleTaskTitle} />
+            </label>
+            <AddDetailsButton />
+            <label>
+                <Textarea value={details} onChange={handleTaskDetails} />
+             </label>
+          </form>
         </Container>
       )}
     </Draggable>
