@@ -28,6 +28,11 @@
   }
   }
 
+  .instructions {
+    padding: 0;
+    list-style-type: disc;
+  }
+
   .support {
     padding: 0;
     margin: 0;
@@ -35,5 +40,6 @@
     @include flex(row nowrap, flex-start, center);
       li {
         padding: 1.5rem;
+        cursor: pointer;
       }
   }

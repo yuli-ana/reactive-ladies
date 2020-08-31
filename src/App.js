@@ -4,8 +4,8 @@ import './styles/index.scss';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
-import About from "./components/About";
-import Board from "./components/Board";
+import Kanban from "./components/Kanban";
+import Info from "./components/Info";
 
 
 function App() {
@@ -22,8 +22,8 @@ function App() {
         <main className={`main-container ${colorTheme}`}>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/board" component={Board} />
-            <Route path="/about" component={About} />
+            <Route path="/info" component={Info} />
+            <Route path="/kanban" component={Kanban} />
           </Switch>
         </main>
         <Footer />   

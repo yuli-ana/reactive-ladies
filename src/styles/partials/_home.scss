@@ -2,7 +2,11 @@
 
 .intro {
   display: flex;
+  flex-wrap: wrap;
   padding: 100px 0;
+  @media(max-width: 768px) {
+    flex-direction: column;
+  }
   .introText {
     padding-right: 50px;
     flex-basis: 50%;
@@ -19,7 +23,10 @@
   }
   .introImg {
     flex-basis: 50%;
-    padding-left: 50px;;
+    padding-left: 50px;
+    @media(max-width: 768px) {
+      padding: 7rem 1rem;
+    }
   }
 }
 
@@ -52,7 +59,7 @@
     display: flex;
     justify-content: center;
     padding: 50px 0;
-    @media screen and (max-width: 900px) {
+    @media(max-width: 900px) {
       flex-direction: column;
   }
     .foundersCard {
@@ -131,6 +138,7 @@
     display: flex; 
     background-color: #fff;
     max-width: 90%;
+    flex-wrap: wrap;
     margin: 0 auto;
     padding: 150px 50px;
     border-radius: 10px;
@@ -162,17 +170,27 @@
   display: flex;
   align-items: center;
   padding: 50px 0 110px 0;
+  @media(max-width: 900px) {
+    flex-direction: column;
+  }
   img {
     max-width: 33.3%;
   }
 }
 
 .subscribeText {
-  padding: 0 70px;
+  padding: 0 3rem;
+  @media(max-width: 900px) {
+    padding: 5rem 7rem;
+    margin: 0 auto;
+  }
   p {
     font-size: 1.3rem;
     line-height: 1.5;
     letter-spacing: 1.2px;
+    @media(max-width: 900px) {
+      text-align: center;
+    }
   }
   button {
     all: unset;

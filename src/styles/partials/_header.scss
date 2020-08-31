@@ -68,22 +68,24 @@
 .menu li {
   padding: 0 2rem;
   margin: 0;
+  border-radius: 0.5rem;
   @media(max-width: 768px) {
     padding: 0;
     margin-bottom: 0.8rem;
   }
-
   a {
     font: 400 1rem $primaryFont;
     letter-spacing: 1.3px;
     color: $textColor;
+    border-radius: 0.5rem;
     font-size: 1.1rem;
+    padding: 1rem;
     text-decoration: none;
     text-transform: uppercase;
     &:hover, 
     &:focus {
-      color: $textColor;
       transition: all 0.2s;
+      background-color: #e6fbf6;
     }
   }
 }
@@ -105,6 +107,7 @@
       &:hover,
       &:focus {
         color: #fff;
+        background-color: transparent;
       }
     }
 }
