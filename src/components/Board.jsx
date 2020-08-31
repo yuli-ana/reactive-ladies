@@ -25,7 +25,7 @@ const defaultState = {
       [ids[1]]: {
           id: ids[1],
           title: 'In Progress',
-          ticketIds: ["Hello"]
+          ticketIds: []
       },
       [ids[2]]: {
           id: ids[2],
