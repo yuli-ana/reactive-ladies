@@ -73,24 +73,17 @@ function MockTask(props) {
 
 
   // TO DO //
-  const openTicketDetails = () => {
-    !isOpen
-    ? setIsOpen(true)
-    : setIsOpen(false);
+  const openTicketDetails = (e) => {
+    if (e.target.classList[2] === 'ticket') {
+      !isOpen
+      ? setIsOpen(true)
+      : setIsOpen(false);
+    }
   }
 
-  const openTicketDetailsStyles = {
-    display: 'block',
-    maxHeight: 'auto',
-    overflow: 'initial',
-  }
+  
 
-  const ticketDetailsStyles = {
-    display: 'none',
-    maxHeight: 0,
-    overflow: 'hidden',
-    transition: 'maxHeight 0.4s'
-  }
+  
 
   function handleTaskTitle(e){
     setTitle(e.target.value); 
@@ -129,7 +122,7 @@ function MockTask(props) {
         ref={provided.innerRef}
         isDragging={snapshot.isDragging}
         className='ticket'
-        onClick={openTicketDetails}
+        onClick={(e) => openTicketDetails(e)}
         >
           <CloseButton click={() => handleDeleteTask(ticket.id, columnId.id)}/>
           <form onSubmit={handleAddTaskDescription}>
@@ -137,9 +130,11 @@ function MockTask(props) {
               <Input type="text" value={title} name="task" placeholder="Title" onChange={handleTaskTitle} />
             </label>
             <AddDetailsButton />
-            <label>
-                <Textarea value={details} onChange={handleTaskDetails} />
-             </label>
+            <div className={!isOpen ? "ticketDetailsStyles" : "openTicketDetailsStyles"}>
+              <label>
+                  <Textarea value={details} onChange={handleTaskDetails} />
+              </label>
+            </div>
           </form>
         </Container>
       )}
