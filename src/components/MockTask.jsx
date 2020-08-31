@@ -55,6 +55,33 @@ const Textarea = styled.textarea `
     background: transparent;
   }
 `;
+
+const Accordion = styled.div`
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease-out;
+`;
+
+const AccordionTwo = styled.div`
+  max-height: 100vh;
+  overflow: hidden;
+  transition: max-height 0.6s ease-in;
+`;
+
+
+
+// .ticketDetailsStyles {
+//   max-height: 0;
+//   overflow: hidden;
+//   transition: max-height 0.6s ease-out;
+// }
+
+// .openTicketDetailsStyles {
+//   max-height: 100vh;
+//   overflow: hidden;
+//   transition: max-height 0.6s ease-in;
+// }
+
   
 function MockTask(props) {
 
@@ -166,11 +193,24 @@ function MockTask(props) {
                 <CloseButton click={() => handleDeleteTask(ticket.id, columnId.id)}/>
               </div>
             </div>
-           <div className={!isOpen ? "ticketDetailsStyles" : "openTicketDetailsStyles"}>
-            <label>
+             {!isOpen ?
+               <Accordion>
+                  <label>
+                    <Textarea placeholder="Enter description" value={details} onChange={handleTaskDetails} />
+                  </label>
+               <Accordion />
+               :
+               <AccordionTwo>
+                   <label>
+                    <Textarea placeholder="Enter description" value={details} onChange={handleTaskDetails} />
+                  </label>
+                <AccordionTwo />
+             }
+<!--              <div className={!isOpen ? "ticketDetailsStyles" : "openTicketDetailsStyles"}> -->
+<!--             <label>
                 <Textarea placeholder="Enter description" value={details} onChange={handleTaskDetails} />
              </label>
-            </div>
+            </div> -->
           </form>
           <ReactTooltip id='drag'>
             <span>Right-click or drag</span>
