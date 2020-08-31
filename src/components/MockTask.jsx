@@ -31,7 +31,7 @@ function MockTask(props) {
     props.setXPos(`${e.pageX}px`);
     props.setYPos(`${e.pageY}px`)
     props.setShowMenu(true);
-    props.setClickedTicketData({ticketId: e.target.attributes[1].nodeValue, colId: e.target.parentElement.attributes[0].nodeValue});
+    props.setClickedTicketData({ticketId: e.currentTarget.attributes[1].nodeValue, colId: e.currentTarget.parentElement.attributes[0].nodeValue});
   }
   
   useEffect(() => {
@@ -64,7 +64,10 @@ function MockTask(props) {
         className='ticket'
         >
           <CloseButton click={() => handleDeleteTask(ticket.id, columnId.id)}/>
-          {props.ticket.title}
+          <h4>{props.ticket.title}</h4>
+          <div>
+            <p>{props.ticket.details}</p>
+          </div>
         </Container>
       )}
     </Draggable>

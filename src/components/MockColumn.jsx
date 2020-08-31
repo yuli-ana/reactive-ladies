@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import MockTask from "./MockTask";
-import { Accordion, AccordionItem } from 'react-sanfona';
 import CloseButton from './buttons/CloseButton';
 import AddButton from './buttons/AddButton';
 
@@ -71,7 +70,6 @@ function MockColumn(props) {
                 {...provided.droppableProps}
                 isDraggingOver={snapshot.isDraggingOver}
               >
-
                 <InnerList tickets={props.tickets} handleDeleteTask={props.handleDeleteTask} columnId={props.column.id} />
                 {provided.placeholder}
               </TaskList>
