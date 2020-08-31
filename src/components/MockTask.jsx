@@ -7,66 +7,60 @@ import { v4 as uuid } from "uuid";
 import ReactTooltip from 'react-tooltip';
 
 const Container = styled.div`
-  padding: 0.8rem;
-  border-radius: 0.2rem;
-  margin-bottom: 0.8rem;
-  width: 100%;
-  box-shadow: 0 1px 1px 0 rgba(66, 66, 66, 0.08), 0 1px 3px 1px rgba(66, 66, 66, 0.16);
-  transition: all 300ms ease-in;
-  background-color: ${(props) => (props.isDragging ? "#fafafa" : "white")};
-  opacity: ${(props) => (props.isDragging ? "0.7" : "1")};
-
+padding: 0.8rem;
+border-radius: 0.2rem;
+margin-bottom: 0.8rem;
+width: 100%;
+box-shadow: 0 1px 1px 0 rgba(66, 66, 66, 0.08), 0 1px 3px 1px rgba(66, 66, 66, 0.16);
+transition: all 300ms ease-in;
+background-color: ${(props) => (props.isDragging ? "#fafafa" : "white")};
+opacity: ${(props) => (props.isDragging ? "0.7" : "1")};
 `;
 
 const Input = styled.input `
   padding: 5px;  
   border: none;
-  
+
   background: transparent;
   transition: all 0.2s ease-in;
-
   &:hover {
     background: rgba(0, 0, 0, 0.1);
   }
-
   &:focus {
     outline: none;
     color: black;
     background: transparent;
-  }
 `;
 
 const Textarea = styled.textarea `
-  padding: 5px;
+padding: 5px;
+background: transparent;
+border: none;
+resize: none;
+display: block;
+width: 100%;
+transition: all 0.2s ease-in;
+&:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+&:focus {
+  outline: none;
+  color: black;
   background: transparent;
-  border: none;
-  resize: none;
-  display: block;
-  width: 100%;
-  transition: all 0.2s ease-in;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.1);
-  }
-
-  &:focus {
-    outline: none;
-    color: black;
-    background: transparent;
-  }
+}
 `;
 
-const Accordion = styled.div`
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-out;
-`;
+// const Accordion = styled.div`
+//   max-height: 0;
+//   overflow: hidden;
+//   transition: max-height 0.4s ease-out;
+// `;
 
-const AccordionTwo = styled.div`
-  max-height: 100vh;
-  overflow: hidden;
-  transition: max-height 0.4s ease-in;
-`;
+// const AccordionTwo = styled.div`
+//   max-height: 100vh;
+//   overflow: hidden;
+//   transition: max-height 0.4s ease-in;
+// `;
 
 
 
@@ -128,7 +122,7 @@ function MockTask(props) {
   }, []);
 
   const openTicketDetails = (e) => {
-    if (e.target.classList[2] === 'ticket') {
+    if (e.target.classList[2] === 'task') {
       !isOpen
       ? setIsOpen(true)
       : setIsOpen(false);
@@ -176,31 +170,22 @@ function MockTask(props) {
         onClick={openTicketDetails}
         >
            <form onSubmit={handleAddTaskDescription} data-tip data-for='drag'>
-              <div className="task-header">
-                <div className="task-title">
-                <label htmlFor="task">
-                  <Input autoFocus={title.length === 0 ? true : false} type="text" autoComplete="off" value={title} name="task" placeholder="Enter title" onChange={handleTaskTitle} />
-                </label>
-                </div>
-                <div className="task-action">
-                  <AddDetailsButton />
-                  <CloseButton click={() => handleDeleteTask(ticket.id, columnId.id)}/>
-                </div>
+            <div className="task-header">
+              <div className="task-title">
+              <label htmlFor="task">
+                <Input type="text" autoComplete="off" value={title} name="task" placeholder="Enter title" onChange={handleTaskTitle} />
+              </label>
               </div>
-              {!isOpen 
-              ?
-                <Accordion>
-                    <label>
-                      <Textarea placeholder="Enter description" value={details} onChange={handleTaskDetails} />
-                    </label>
-                </Accordion>
-                :
-                <AccordionTwo>
-                    <label>
-                      <Textarea placeholder="Enter description" value={details} onChange={handleTaskDetails} />
-                    </label>
-                </AccordionTwo>  
-              }      
+              <div className="task-action">
+                <AddDetailsButton />
+                <CloseButton click={() => handleDeleteTask(ticket.id, columnId.id)}/>
+              </div>
+            </div>
+           <div className={!isOpen ? "ticketDetailsStyles" : "openTicketDetailsStyles"}>
+            <label>
+                <Textarea placeholder="Enter description" value={details} onChange={handleTaskDetails} />
+             </label>
+             </div>
           </form>
           <ReactTooltip id='drag'>
             <span>Right-click or drag</span>

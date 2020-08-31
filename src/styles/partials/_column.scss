@@ -45,14 +45,14 @@
   }
 }
 
-// .ticketDetailsStyles {
-//   max-height: 0;
-//   overflow: hidden;
-//   transition: max-height 0.4s ease-out;
-// }
+.ticketDetailsStyles {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+}
 
-// .openTicketDetailsStyles {
-//   max-height: 100vh;
-//   overflow: hidden;
-//   transition: max-height 0.4s ease-in;
-// }
+.openTicketDetailsStyles {
+  max-height: 100vh;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in;
+}

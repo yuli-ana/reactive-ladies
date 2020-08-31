@@ -15,7 +15,6 @@ const StyledAddCol = styled.button`
   display: block;
   border: none;
   border-radius: 0.2rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
