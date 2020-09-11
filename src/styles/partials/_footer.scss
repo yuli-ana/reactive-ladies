@@ -52,23 +52,27 @@ footer {
         }
     }
     @media(max-width: 900px) {
-        width: 80%;
+        width: 50%;
+        padding-left: initial;
     }
   }
 
   .appDl {
-    @media(max-width: 900px) {
+    @media(max-width: 480px) {
         padding-left: initial;
     }
   }
 
   .appDl li {
       display: inline-block;
+      @media(max-width: 480px) {
+        display: initial;
+      }
       &:first-of-type {
           padding-right: 20px;
-          @media(max-width: 900px) {
-            padding-right: initial;
-        }
+        //   @media(max-width: 900px) {
+        //     padding-right: initial;
+        // }
       }
       &:hover,
       &:focus {
