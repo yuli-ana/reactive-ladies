@@ -53,12 +53,14 @@ footer {
     }
     @media(max-width: 900px) {
         width: 50%;
+    }
+    @media(min-width: 901px) {
         padding-left: initial;
     }
   }
 
   .appDl {
-    @media(max-width: 480px) {
+    @media(max-width: 1007px) {
         padding-left: initial;
     }
   }
@@ -70,9 +72,9 @@ footer {
       }
       &:first-of-type {
           padding-right: 20px;
-        //   @media(max-width: 900px) {
-        //     padding-right: initial;
-        // }
+          @media(min-width: 900px) and (max-width: 935px) {
+            padding-right: initial;
+        }
       }
       &:hover,
       &:focus {

@@ -91,6 +91,11 @@
       transition: all 0.2s;
       background-color: #e6fbf6;
     }
+    &:last-of-type {
+      @media(min-width: 768px) {
+        padding: initial;
+      }
+    }
   }
 }
   
