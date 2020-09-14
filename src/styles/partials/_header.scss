@@ -6,6 +6,7 @@
   background-color: #fff;
   padding: 0.8rem;
   box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  z-index: 10;
 }
 
 .navWrapper {
@@ -61,6 +62,9 @@
     @media(max-width: 768px) {
       @include flex(column nowrap, center, flex-start);
       width: 100%;
+      box-shadow: 0px 12px 15px rgba(0,0,0,0.2);
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
     }
   }
 }
@@ -87,6 +91,11 @@
       transition: all 0.2s;
       background-color: #e6fbf6;
     }
+    &:last-of-type {
+      @media(min-width: 768px) {
+        padding: initial;
+      }
+    }
   }
 }
   
@@ -110,4 +119,30 @@
         background-color: transparent;
       }
     }
+}
+
+@media(max-width: 900px) {
+  .navWrapper {
+    position: relative;
+    .menu.open {
+      position: absolute;
+      top: 32px;
+      background-color: white;
+      padding-left: initial;
+      align-items: center;
+      li {
+        padding: initial;
+        &:last-of-type {
+          margin-left: 1rem;
+        }
+      }
+    }
+  }
+
+  .menu.open li a {
+    display: block;
+    padding: 5px 1rem;
+    text-align: center;
+  }
+
 }

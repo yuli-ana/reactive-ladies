@@ -31,6 +31,9 @@ footer {
 .languageSelect {
     padding: 1rem;
     width: 30rem;
+    @media(max-width: 900px) {
+        width: 100%;
+      }
 }
 
 .socials {
@@ -49,14 +52,29 @@ footer {
         }
     }
     @media(max-width: 900px) {
-        width: 80%;
+        width: 50%;
+    }
+    @media(min-width: 901px) {
+        padding-left: initial;
+    }
+  }
+
+  .appDl {
+    @media(max-width: 1007px) {
+        padding-left: initial;
     }
   }
 
   .appDl li {
       display: inline-block;
+      @media(max-width: 480px) {
+        display: initial;
+      }
       &:first-of-type {
           padding-right: 20px;
+          @media(min-width: 900px) and (max-width: 935px) {
+            padding-right: initial;
+        }
       }
       &:hover,
       &:focus {
@@ -68,8 +86,12 @@ footer {
       padding: 1rem;
   }
 
+  .subscribeText {
+    @media(max-width: 900px) {
+        padding: 5rem 5px;
+    }
+  }
   
-
   .subscribeText a {
     color: white;
     text-decoration: none;

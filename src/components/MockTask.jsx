@@ -50,33 +50,6 @@ transition: all 0.2s ease-in;
   background: transparent;
 }
 `;
-
-// const Accordion = styled.div`
-//   max-height: 0;
-//   overflow: hidden;
-//   transition: max-height 0.4s ease-out;
-// `;
-
-// const AccordionTwo = styled.div`
-//   max-height: 100vh;
-//   overflow: hidden;
-//   transition: max-height 0.4s ease-in;
-// `;
-
-
-
-// .ticketDetailsStyles {
-//   max-height: 0;
-//   overflow: hidden;
-//   transition: max-height 0.6s ease-out;
-// }
-
-// .openTicketDetailsStyles {
-//   max-height: 100vh;
-//   overflow: hidden;
-//   transition: max-height 0.6s ease-in;
-// }
-
   
 function MockTask(props) {
 

@@ -16,8 +16,7 @@ const ContextMenu = ({xPos, yPos, data, clickedTicketData}) => {
   }, [clickedTicketData])
   
   // make copy of the data state object
-  const dataCopy = {};
-  Object.assign(dataCopy, data);
+  const dataCopy = {...data};
   
   const getTicketData = () => {
     let index = '';
@@ -27,7 +26,7 @@ const ContextMenu = ({xPos, yPos, data, clickedTicketData}) => {
       // find the index of the clicked ticket using its ID
       const ticketToRemoveIdx = dataCopy.columns[key].ticketIds.findIndex(ticketIds => ticketIds === clickedTicketData.ticketId);
       // loop returns -1 if not found, need to return value only if found
-      if (Math.sign(ticketToRemoveIdx) !== -1) {
+      if (ticketToRemoveIdx !== -1) {
         index =  ticketToRemoveIdx;
       }
     }
@@ -40,8 +39,7 @@ const ContextMenu = ({xPos, yPos, data, clickedTicketData}) => {
 
     for (let key in dataCopy.columns) {
       if (dataCopy.columns[key].id === columnId) {
-        const ticket = dataCopy.columns[key].ticketIds.splice(ticketIdx, 1);
-        ticketArr = ticket;
+        ticketArr = dataCopy.columns[key].ticketIds.splice(ticketIdx, 1);
       }
     }
 
